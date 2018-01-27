@@ -9,7 +9,7 @@ require_once("dbessential.php");
 function getTableFields($queryTable)
 {
     // get info about the table
-    $sql = "describe table $queryTable";
+    $sql = "describe $queryTable";
 
     // query stuff
     $result = performActionOnDB($sql);
