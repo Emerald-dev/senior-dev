@@ -9,6 +9,7 @@ function getTombstoneData()
 
     // query stuff
     $result = performActionOnDB($sql);
+    return $result;
 }
 
 
