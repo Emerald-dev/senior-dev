@@ -23,9 +23,9 @@ create table if not exists flora(
     image mediumtext
 )engine=innodb;
 
-drop table if exists tombstone;
+drop table if exists tombstones;
 
-create table if not exists tombstone(
+create table if not exists tombstones(
     id integer not null primary key auto_increment,
     name varchar(30),
     lat decimal(16,14),
