@@ -48,8 +48,8 @@ drop table if exists related_destination;
 create table if not exists related_destination( 
     id integer not null primary key auto_increment, 
     name varchar(30),
-    lat decimal(16,14)
-    lon decimal(16,14)
+    lat decimal(16,14),
+    lon decimal(16,14),
     summary tinytext,
     image mediumtext
 )engine=innodb;
