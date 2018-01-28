@@ -7,52 +7,50 @@ use rapids;
 drop table if exists users;
 
 create table if not exists users(
-   id integer primary key auto_increment,
-   username varchar(20) unique,
-   password varchar(30),
-   email varchar(40) unique,
-   salt varchar(10)
-)engine=innodb;
-
-drop table if exists flora;
-
-create table if not exists flora( 
-    id integer not null primary key auto_increment, 
-    name varchar(30),
-    content mediumtext,
-    image mediumtext
-)engine=innodb;
-
-drop table if exists tombstones;
-
-create table if not exists tombstones(
-    id integer not null primary key auto_increment,
-    name varchar(30),
-    lat decimal(16,14),
-    lon decimal(16,14),
-    summary tinytext,
-    content mediumtext,
-    image mediumtext
-)engine=innodb;
-
-drop table if exists general_content;
-
-create table if not exists general_content(
-    id integer not null primary key auto_increment,
-    title varchar(30),
-    content mediumtext
+   id integer not null primary key auto_increment,
+   username varchar(20) not null,
+   password varchar(30) not null,
+   email varchar(40) not null,
+   salt varchar(10) not null,
+   createPrivilege boolean,
+   UNIQUE (email),
+   UNIQUE (username)
 )engine=innodb;
 
 drop table if exists related_destination;
 
 create table if not exists related_destination( 
     id integer not null primary key auto_increment, 
-    name varchar(30),
-    lat decimal(16,14),
-    lon decimal(16,14),
-    summary tinytext,
-    image mediumtext
+    name varchar(50) not null,
+    lat decimal(16,14) not null,
+    lon decimal(16,14) not null,
+    link tinytext,
+	UNIQUE (name)
 )engine=innodb;
+
+drop table if exists tombstones;
+
+create table if not exists tombstones(
+    id integer not null primary key auto_increment,
+    name varchar(30) not null,
+    lat decimal(16,14) not null,
+    lon decimal(16,14) not null,
+    summary tinytext,
+    content mediumtext,
+    image mediumtext,
+	filter tinytext,
+	UNIQUE (name)
+)engine=innodb;
+
+drop table if exists general_content;
+
+create table if not exists general_content(
+    id integer not null primary key auto_increment,
+    page ENUM('Home', 'Flora', 'History', 'Tombstone', 'Destination', 'About') not null,
+	dataType ENUM('title', 'subtitle', 'link', 'text') not null,
+    content mediumtext  not null
+)engine=innodb;
+
 
 
 
