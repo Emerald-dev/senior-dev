@@ -12,7 +12,7 @@ create table if not exists users(
    password varchar(30) not null,
    email varchar(40) not null,
    salt varchar(10) not null,
-   createPrivilege boolean,
+   createPrivilege boolean DEFAULT FALSE,
    UNIQUE (email),
    UNIQUE (username)
 )engine=innodb;
