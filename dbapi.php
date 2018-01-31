@@ -2,7 +2,7 @@
 
 require_once('dbfetchInfo.php');
 
-function getTombstone()
+function getTombstoneData()
 {
   $sql = "SELECT *FROM tombstone";
   $result = mysql_query($sql);
