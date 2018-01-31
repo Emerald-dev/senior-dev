@@ -2,15 +2,32 @@
 
 require_once('dbfetchInfo.php');
 
-function getTombstoneData()
+function getTombstone()
 {
-    // get info about the table
-    $sql = "select * from tombstones";
+  $sql = "SELECT *FROM tombstone";
+  $result = mysql_query($sql);
 
-    // query stuff
-    $result = performActionOnDB($sql);
-    return $result;
 }
+
+function getUser($username){
+      $sql = "SELECT * FROM 'user' WHERE 'username' = '$username' ";
+      $result =mysql_query($sql);
+      return $result;
+}
+ function getAllDestination(){
+        $sql ="SELECT * FROM 'RelatedDestination'";
+        $result =mysql_query($sql);
+        return $result;
+
+}
+
+ function getContent($page){
+        $sql = "SELECT * FROM 'GeneralContent' WHERE 'page' = '$page'";
+        $esult = mysql_query($sql);
+        return $result;
+}
+
+
 
 
 ?>
