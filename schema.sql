@@ -17,20 +17,9 @@ create table if not exists users(
    UNIQUE (username)
 )engine=innodb;
 
-drop table if exists related_destination;
+drop table if exists pins;
 
-create table if not exists related_destination( 
-    id integer not null primary key auto_increment, 
-    name varchar(50) not null,
-    lat decimal(16,14) not null,
-    lon decimal(16,14) not null,
-    link tinytext,
-	UNIQUE (name)
-)engine=innodb;
-
-drop table if exists tombstones;
-
-create table if not exists tombstones(
+create table if not exists pins(
     id integer not null primary key auto_increment,
     name varchar(30) not null,
     lat decimal(16,14) not null,
@@ -38,17 +27,17 @@ create table if not exists tombstones(
     summary tinytext,
     content mediumtext,
     image mediumtext,
-	filter tinytext,
+	filters tinytext,
 	UNIQUE (name)
 )engine=innodb;
 
-drop table if exists general_content;
+drop table if exists content;
 
-create table if not exists general_content(
+create table if not exists content(
     id integer not null primary key auto_increment,
-    page ENUM('Home', 'Flora', 'History', 'Tombstone', 'Destination', 'About') not null,
-	dataType ENUM('title', 'subtitle', 'link', 'text') not null,
-    content mediumtext  not null
+    page ENUM('Home', 'Tombstones & Natural History', 'Nearby Historical Trails', 'About Us') not null,
+	dataType ENUM('Large Title', 'Medium Title', 'Small Title', 'link', 'text') not null,
+    paragraph text  not null
 )engine=innodb;
 
 
