@@ -16,19 +16,13 @@
                         <div><a href="home.php">Home</a></div>
                     </li>
                     <li <?php echo ($page == 'tombstones') ? 'class="current"' : '';?> >
-                        <div><a href="tombstones.php">Tombstones</a></div>
+                        <div><a href="tombstones.php">Tombstones & Natural History</a></div>
                     </li>
-                    <li <?php echo ($page == 'flora') ? 'class="current"' : '';?> >
-                        <div><a href="flora.php">Flora</a></div>
-                    </li>
-					<li <?php echo ($page == 'history') ? 'class="current"' : '';?> >
-                        <div><a href="history.php">History</a></div>
-                    </li>
-					<li <?php echo ($page == 'destinations') ? 'class="current"' : '';?> >
-                        <div><a href="destinations.php">Destinations</a></div>
+					<li <?php echo ($page == 'nearbyhis') ? 'class="current"' : '';?> >
+                        <div><a href="nearbyhis.php">Nearby Historical Trails</a></div>
                     </li>
 					<li <?php echo ($page == 'about') ? 'class="current"' : '';?> >
-                        <div><a href="about.php">About</a></div>
+                        <div><a href="about.php">About Us</a></div>
                     </li>
 					<li <?php echo ($page == 'blog') ? 'class="current"' : '';?> >
                         <div><a href="blog.php">Blog</a></div>
