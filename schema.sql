@@ -36,7 +36,7 @@ drop table if exists content;
 create table if not exists content(
     id integer not null primary key auto_increment,
     page ENUM('Home', 'Tombstones & Natural History', 'Nearby Historical Trails', 'About Us') not null,
-	dataType ENUM('Large Title', 'Medium Title', 'Small Title', 'Link', 'Paragraph') not null,
+	dataType ENUM('Large Title', 'Medium Title', 'Small Title', 'Link', 'Image', 'Paragraph') not null,
     text text  not null
 )engine=innodb;
 

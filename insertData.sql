@@ -33,6 +33,7 @@ insert into content
 	values
 	('Home', 'Large Title', 'Rapids Cemetery'),
 	('Home', 'Medium Title', 'Rochester, New York'),
+	('Home', 'Image', 'https://assets.entrepreneur.com/content/3x2/1300/20150406145944-dos-donts-taking-perfect-linkedin-profile-picture-selfie-mobile-camera-2.jpeg'),
 	('Home', 'Paragraph', 'This cemetery is located on the north side of Congress Avenue on the west side of the City of Rochester, N. Y.'),
 	('Home', 'Paragraph', 'This cemetery was probably founded between 1810 and 1812. The property was originally owned by the Wadsworth family which owned land from Geneseo to Rochester. The Wadsworths set aside one and a quarter acre for a burial place of area residents. The cemetery resided in the Town of Gates until 1902 when the area was annexed into the City of Rochester. The road leading to the cemetery was originally called Cemetery Road. Then between 1880 and 1890 the name was changed to Chester Street. In 1899, Chester Street became Congress Avenue.'),
 	('Home', 'Paragraph', 'On 20 September 1883 Herbert and William Wadsworth sold the cemetery lot to the newly formed "Rapids Cemetery Association." Monroe H. Oakley was the first president of the organization and Isaac Loomis was treasurer. The last known record of the Rapids Cemetery Association was in 1900 when they paid property taxes. The map, below, was traced from one probably made in the 1890s, although the exact date is unknown. It also included a list of plot owner, which relate to the map.'),
@@ -43,14 +44,17 @@ insert into content
 	('Home', 'Paragraph', 'To most, it is just a brief gap of sunlight in the middle of a shady westside block.'),
 	('Tombstones & Natural History', 'Large Title', 'Tombstones & Natural History'),
 	('Tombstones & Natural History', 'Medium Title', 'Tombstones'),
+	('Tombstones & Natural History', 'Link', 'http://google.com'),
 	('Tombstones & Natural History', 'Paragraph', 'There are many cemetery records. Most are lists of tombstone inscriptions but a few also include burial records. Not every cemetery is available and probably never will be as some are very large.'),
 	('Tombstones & Natural History', 'Paragraph', 'Some cemeteries have links to on-line maps from MapQuest and Google Maps which can be used to find the location of the cemetery and also to get directions to the cemetery. Included are GPS coordinates. If you need GPS coordinates in a different format, use this website to translate them to your format.'),
 	('Tombstones & Natural History', 'Medium Title', 'Flowers and Plants'),
 	('Tombstones & Natural History', 'Paragraph', 'A flower, sometimes known as a bloom or blossom, is the reproductive structure found in flowering plants (plants of the division Magnoliophyta, also called angiosperms). The biological function of a flower is to effect reproduction, usually by providing a mechanism for the union of sperm with eggs. Flowers may facilitate outcrossing (fusion of sperm and eggs from different individuals in a population) or allow selfing (fusion of sperm and egg from the same flower). Some flowers produce diaspores without fertilization (parthenocarpy). Flowers contain sporangia and are the site where gametophytes develop. Many flowers have evolved to be attractive to animals, so as to cause them to be vectors for the transfer of pollen. After fertilization, the ovary of the flower develops into fruit containing seeds.'),
+	('Tombstones & Natural History', 'Image', 'https://maxpull-tlu7l6lqiu.stackpathdns.com/wp-content/uploads/2017/06/zone-9-lilac.jpg'),
 	('Nearby Historical Trails', 'Large Title', 'Nearby Historical Trails'),
 	('Nearby Historical Trails', 'Paragraph', 'There are maps of the Towns in Monroe County. There are also a few more maps listed on the links page.These are the maps that are here on the GenWeb of Monroe County. Besides these maps, there are many cemetery maps on the Cemetery Page and links to maps on other websites on the Links Page.'),
 	('About Us', 'Large Title', 'About Us'),
 	('About Us', 'Medium Title', 'About the USGenWeb Project'),
+	('About Us', 'Link', 'http://google.com'),
 	('About Us', 'Paragraph', 'In March and April, 1996, a group of genealogists from Kentucky began organizing web pages for each county in their state. The idea caught on and soon other states began organizing similar pages. Almost every county in the US and Canada has a GenWeb page. Then the GenWeb project went world wide and there are similar pages for most countries on our planet. All GenWeb pages are staffed by volunteers helping people to find their families.');
 
 

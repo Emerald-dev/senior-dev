@@ -2,32 +2,25 @@
 
 require_once('dbfetchInfo.php');
 
-function getTombstoneData()
+$password = "SillyRabbitTrixR4K1dz!!";
+
+function getPinData()
 {
-  $sql = "SELECT *FROM tombstone";
+	$sql = "SELECT *FROM pins";
   $result = mysql_query($sql);
 
 }
 
 function getUser($username){
-      $sql = "SELECT * FROM 'user' WHERE 'username' = '$username' ";
+      $sql = "SELECT * FROM user WHERE 'username' = '$username' ";
       $result =mysql_query($sql);
       return $result;
 }
- function getAllDestination(){
-        $sql ="SELECT * FROM 'RelatedDestination'";
-        $result =mysql_query($sql);
-        return $result;
-
-}
 
  function getContent($page){
-        $sql = "SELECT * FROM 'GeneralContent' WHERE 'page' = '$page'";
+        $sql = "SELECT * FROM Content WHERE 'page' = '$page'";
         $esult = mysql_query($sql);
         return $result;
 }
-
-
-
 
 ?>
