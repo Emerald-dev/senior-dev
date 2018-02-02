@@ -7,11 +7,11 @@ require_once("dbparams.php");
   * performs an action on the DB
   **/
 
-function performActionOnDB($builtQuery)
+function performActionOnDB($sql)
 {
 
     // create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    $conn = getDBConnection();
 
     // Check connection
     if (!$conn) {
@@ -19,18 +19,18 @@ function performActionOnDB($builtQuery)
     }
 
     // get info about the table
-        if (!$result = $mysqli->query($sql)) {
+        if (!$result = $conn->query($sql)) {
         // comment out error messages when it is time to put to prod
         echo "Error: Our query failed to execute: \n";
         echo "Query: " . $sql . "\n";
-        echo "Errno: " . $mysqli->errno . "\n";
-        echo "Error: " . $mysqli->error . "\n";
+        echo "Errno: " . $conn->errno . "\n";
+        echo "Error: " . $conn->error . "\n";
         exit;
     }
 
     //check results
     if ($result->num_rows === 0) {
-        echo("No match for table $queryTable");
+        echo("No resuls found");
         exit;
     }
     return $result;

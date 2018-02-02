@@ -1,10 +1,8 @@
-
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "SillyRabbitTrixR4K1dz!!";
-$dbname = "rapids";
+function getDBConnection()
+{
+    return mysqli_connect("localhost", "root", "SillyRabbitTrixR4K1dz!!", "rapids");
+}
 
 ?>
-
