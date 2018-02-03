@@ -13,7 +13,7 @@
             <nav>
                 <ul>
                     <li <?php echo ($page == 'home') ? 'class="current"' : '';?> >
-                        <div><a href="home.php">Home</a></div>
+                        <div><a href="index.php">Home</a></div>
                     </li>
                     <li <?php echo ($page == 'tombstones') ? 'class="current"' : '';?> >
                         <div><a href="tombstones.php">Tombstones & Natural History</a></div>
