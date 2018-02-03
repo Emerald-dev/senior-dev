@@ -11,21 +11,23 @@ $sql = $_POST['fullQuery'];
 $conn = getDBConnection();
 
 // Check connection
-if (!$conn) {
+if (!$conn) 
+{
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$result = $conn->query($sql);
+
 if($conn->affected_rows < 1)
 {
-echo("database operation failed. something went wrong </br></br>");
-echo "Query: " . $sql . "</br></br>";
-echo "Errno: " . $conn->errno . "</br></br>";
-echo "Error: " . $conn->error . "</br></br>";
-
+    echo("database operation failed. something went wrong </br></br>");
+    echo "Query: " . $sql . "</br></br>";
+    echo "Errno: " . $conn->errno . "</br></br>";
+    echo "Error: " . $conn->error . "</br></br>";
 }
 else
 {
-echo("database operation completed successfully");
+    echo("database operation completed successfully");
 }
 echo("</p>");
 echo("</body>");

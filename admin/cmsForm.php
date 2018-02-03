@@ -15,7 +15,7 @@ $objects = array("users", "pins", "content");
 
 if(isset($_POST['fieldSet']))
 {
-    echo("<form action='./dbformSubmit.php' method='post'>");
+    echo("<form action='./dbsubmitForm.php' method='post'>");
 }
 else
 {
@@ -83,7 +83,12 @@ if(isset($_POST['fieldSet']))
         $builtQuery = $builtQuery . ") values (";
         foreach($fieldset as $field)
         {
-            $builtQuery = $builtQuery . $_POST[$field] . ", ";
+            $postvar = $_POST[$field];
+            if(!ctype_digit($postvar))
+            {
+                $postvar = "'" . $postvar . "'";
+            }
+            $builtQuery = $builtQuery . $postvar . ", ";
         }
         $builtQuery = substr($builtQuery, 0, -2);
         $builtQuery = $builtQuery . ");";
