@@ -79,8 +79,8 @@ if(isset($_POST['fieldSet']))
         {
             $builtQuery = $builtQuery . $field . ", ";
         }
-        $builtQuery = substr($builtQuery, 0, -1);
-        $builtQuery = $builtQuery + ") values("
+        $builtQuery = substr($builtQuery, 0, -2);
+        $builtQuery = $builtQuery + ") values(";
         foreach($fieldset as $field)
         {
             $builtQuery = $builtQuery . $_POST[$field] . ", ";
@@ -96,7 +96,7 @@ if(isset($_POST['fieldSet']))
             $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . ",";
         }
         $builtQuery = substr($builtQuery, 0, -1);
-        $builtQuery = $builtQuery + " where "
+        $builtQuery = $builtQuery + " where ";
     }
     if($selectedAction == "delete")
     {
