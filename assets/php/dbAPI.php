@@ -10,9 +10,8 @@ function getPinData()
 }
 
 function getUser($username){
-   $sql = "SELECT * FROM user WHERE 'username' = '$username' ";
+   $sql = "SELECT * FROM users WHERE 'username' = '$username' ";
    return  performActionOnDB($sql);
-
 }
 
  function getContent($page){
