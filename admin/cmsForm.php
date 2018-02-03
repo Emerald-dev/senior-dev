@@ -13,7 +13,10 @@ require_once("../assets/php/dbAPI.php");
 
 if(isset($_POST['fieldSet']))
 {
-    echo("<form action='dbformSubmit.php' method='post'>");
+	unset($_POST['action']);
+	unset($_POST['object']);
+	unset($_POST['fieldSet']);
+    echo("<form action='dbsubmitForm.php' method='post'>");
 }
 else
 {
