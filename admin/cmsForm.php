@@ -18,9 +18,6 @@ if(!isset($_COOKIE['username'])){
 
 if(isset($_POST['fieldSet']))
 {
-	unset($_POST['action']);
-	unset($_POST['object']);
-	unset($_POST['fieldSet']);
     echo("<form action='dbsubmitForm.php' method='post'>");
 }
 else
