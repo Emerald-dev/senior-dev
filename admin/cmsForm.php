@@ -29,7 +29,6 @@ if(!isset($_POST['action']) || !isset($_POST['object']))
 	
 	// allow them to edit users if they have permission to 
 	$currentUser = $_COOKIE['username'];
-	echo("username: $currentUser");
 	$userData = getUser($currentUser);
 	if ($userData->num_rows > 0) {
 		while($row = $userData->fetch_assoc()) {
