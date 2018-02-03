@@ -80,12 +80,12 @@ if(isset($_POST['fieldSet']))
             $builtQuery = $builtQuery . $field . ", ";
         }
         $builtQuery = substr($builtQuery, 0, -2);
-        $builtQuery = $builtQuery . ") values(";
+        $builtQuery = $builtQuery . ") values (";
         foreach($fieldset as $field)
         {
             $builtQuery = $builtQuery . $_POST[$field] . ", ";
         }
-        $builtQuery = substr($builtQuery, 0, -1);
+        $builtQuery = substr($builtQuery, 0, -2);
         $builtQuery = $builtQuery . ");";
     }
     if($selectedAction == "update")
