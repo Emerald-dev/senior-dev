@@ -9,6 +9,11 @@ require_once("../assets/php/dbAPI.php");
 
 // TODO: should pull objects from db directly instead of using manually configured array
 
+// redirect if they aren't logged
+if(!isset($_COOKIE['username'])){
+	header('Location: ' . "login.php");
+}
+
 // you must use an action on an object
 
 if(isset($_POST['fieldSet']))
@@ -29,6 +34,7 @@ if(!isset($_POST['action']) || !isset($_POST['object']))
 	
 	// allow them to edit users if they have permission to 
 	$currentUser = $_COOKIE['username'];
+	echo("username: $currentUser");
 	$userData = getUser($currentUser);
 	if ($userData->num_rows > 0) {
 		while($row = $userData->fetch_assoc()) {
