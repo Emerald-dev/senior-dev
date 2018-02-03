@@ -15,8 +15,7 @@ $saltedPass = $enteredPassword . $userStoredSalt;
 
 
 $passhash = hash('sha256', $saltedPass);
-
-if($passhash == $userStoredPassHash)
+if(strtolower($passhash) == strtolower($userStoredPassHash))
 {
     header('Location: ' . "success.php", true, 302);
     exit();
