@@ -21,11 +21,11 @@
 					<li <?php echo ($page == 'nearbyhis') ? 'class="current"' : '';?> >
                         <div><a href="nearbyhis.php">Nearby Historical Trails</a></div>
                     </li>
-					<li <?php echo ($page == 'about') ? 'class="current"' : '';?> >
-                        <div><a href="about.php">About Us</a></div>
+					<li <?php echo ($page == 'contact') ? 'class="current"' : '';?> >
+                        <div><a href="contact.php">Contact Us</a></div>
                     </li>
 					<li <?php echo ($page == 'blog') ? 'class="current"' : '';?> >
-                        <div><a href="blog.php">Blog</a></div>
+                        <div><a href=" https://rapidscemeteryblog.wordpress.com/">Blog</a></div>
                     </li>
                 </ul>
             </nav>
