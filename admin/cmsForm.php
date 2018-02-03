@@ -86,12 +86,12 @@ if(isset($_POST['fieldSet']))
             $postvar = $_POST[$field];
             if(!ctype_digit($postvar))
             {
-                $postvar = "'" . $postvar . "'";
+                $postvar = '"' . $postvar . '"';
             }
             $builtQuery = $builtQuery . $postvar . ", ";
         }
         $builtQuery = substr($builtQuery, 0, -2);
-        $builtQuery = $builtQuery . ");";
+        $builtQuery = $builtQuery . ")";
     }
     if($selectedAction == "update")
     {
@@ -111,7 +111,6 @@ if(isset($_POST['fieldSet']))
             $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . " and";
         }
         $builtQuery = substr($builtQuery, 0, -3);
-        $builtQuery = $builtQuery . ";";
     }
     echo("<input type='radio' name='fullQuery' value='$builtQuery' checked>$builtQuery</br>");
 }
