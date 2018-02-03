@@ -1,7 +1,7 @@
 <?php
 // This is a query builder for the DB. anything the user might want to do, this should build
 // the right db query to do it.
-// NOTE: this is the flow of the file, it doesnt actually work yet. missing all human interaction code
+// NOTE: this is the flow of the file, it doesn't actually work yet. missing all human interaction code
 
 require_once("../assets/php/dbessential.php");
 require_once("../assets/php/dbfetchInfo.php");
@@ -29,10 +29,11 @@ if(!isset($_POST['action']) || !isset($_POST['object']))
 	
 	// allow them to edit users if they have permission to 
 	$currentUser = $_POST['user'];
+	echo("username: $currentUser");
 	$userData = getUser($currentUser);
 	if ($userData->num_rows > 0) {
 		while($row = $userData->fetch_assoc()) {
-			if($row["createPriilege"] == true){
+			if($row["createPrivilege"] == true){
 				echo("<input type='radio' name='object' value='users'> Users </br>");
 			}
 		}
