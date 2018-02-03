@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Simple Map<title>
+		<title>Simple Map</title>
 		<meta name="viewport" content="initial-scale=1.0" charset="utf-8" />
 		<style>
 			#map {
