@@ -17,7 +17,7 @@
 </head>
 <body>
 <?php
-require_once("pinXML.php");
+	require_once("pinXML.php");
 ?>
 <div id="map"></div>
 <script type="text/javascript">
