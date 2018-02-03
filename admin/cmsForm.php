@@ -30,8 +30,8 @@ if(!isset($_POST['action']) || !isset($_POST['object']))
 	// allow them to edit users if they have permission to 
 	$currentUser = $_POST['user'];
 	$userData = getUser($currentUser);
-	if ($result->num_rows > 0) {
-		while($row = $result->fetch_assoc()) {
+	if ($userData->num_rows > 0) {
+		while($row = $userData->fetch_assoc()) {
 			if($row["createPriilege"] == true){
 				echo("<input type='radio' name='object' value='users'> Users </br>");
 			}
