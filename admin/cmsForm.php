@@ -28,7 +28,7 @@ if(!isset($_POST['action']) || !isset($_POST['object']))
     echo("Select the item you would like to change: </br>");
 	
 	// allow them to edit users if they have permission to 
-	$currentUser = $_POST['user'];
+	$currentUser = $_COOKIE['username'];
 	echo("username: $currentUser");
 	$userData = getUser($currentUser);
 	if ($userData->num_rows > 0) {
