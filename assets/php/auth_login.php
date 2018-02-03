@@ -15,9 +15,9 @@ $saltedPass = $enteredPassword . $userStoredSalt;
 
 
 $passhash = hash('sha256', $saltedPass);
-if(strtolower($passhash) == strtolower($userStoredPassHash, "/"))
+if(strtolower($passhash) == strtolower($userStoredPassHash))
 {
-	setcookie("username", $user, time() + 1500);
+	setcookie("username", $user, time() + 1500, "/");
     header('Location: ' . "../../admin/cmsForm.php", true, 302);
     exit();
 }
