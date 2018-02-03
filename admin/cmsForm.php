@@ -5,38 +5,50 @@
 
 require_once("../assets/php/dbessential.php");
 require_once("../assets/php/dbfetchInfo.php");
+require_once("../assets/php/dbAPI.php");
 
 // TODO: should pull objects from db directly instead of using manually configured array
 
-
 // you must use an action on an object
-$actions = array("create", "update", "delete");
-$objects = array("users", "pins", "content");
 
 if(isset($_POST['fieldSet']))
 {
-    echo("<form action='/dbformSubmit.php' method='post'>");
+    echo("<form action='dbformSubmit.php' method='post'>");
 }
 else
 {
-    echo("<form action='/dbaccessForm.php' method='post'>");
+    echo("<form action='cmsForm.php' method='post'>");
 }
 
 if(!isset($_POST['action']) || !isset($_POST['object']))
 {
-    echo("What do you want to do? </br>");
-    echo("<input type='radio' name='action' value='create'> Create </br>");
-    echo("<input type='radio' name='action' value='update'> Update </br>");
-    echo("<input type='radio' name='action' value='delete'> Delete </br>");
+    echo("Select the item you would like to change: </br>");
+	
+	// allow them to edit users if they have permission to 
+	$currentUser = $_POST['user'];
+	$userData = getUser($currentUser);
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			if($row["createPriilege"] == true){
+				echo("<input type='radio' name='object' value='users'> Users </br>");
+			}
+		}
+	}
+
+    echo("<input type='radio' name='object' value='content'> Page Content </br>");
+    echo("<input type='radio' name='object' value='pins'> Map Pins </br>");
     echo("<br/>");
     echo("<br/>");
-    echo("<input type='radio' name='object' value='users'> users </br>");
-    echo("<input type='radio' name='object' value='content'> content </br>");
-    echo("<input type='radio' name='object' value='pins'> pins </br>");
-    echo("<br/>");
-    echo("<br/>");
+	
+	echo("Select the action you would like to take: </br>");
+	echo("Select the action you would like to take:</br>");
+	echo("<input type='radio' name='action' value='create'> Create </br>");
+	echo("<input type='radio' name='action' value='update'> Update </br>");
+	echo("<input type='radio' name='action' value='delete'> Delete </br>");
 }
 
+
+// if a page and action is selected, show the table attributes
 if(isset($_POST['action']) && isset($_POST['object']) && !isset($_POST['fieldSet']))
 {
     $action = $_POST['action'];
@@ -48,9 +60,14 @@ if(isset($_POST['action']) && isset($_POST['object']) && !isset($_POST['fieldSet
     $selectedObject = $_POST['object']; // human interaction to select object
     $tableFields = getTableFields($selectedObject);
     $tableFieldsStr = "";
+	$index = 0;
     foreach($tableFields as $fieldStr)
     {
-        $tableFieldsStr = $tableFieldsStr . "-" . $fieldStr;
+		// don't show the id
+		if(index != 0){
+			$tableFieldsStr = $tableFieldsStr . "-" . $fieldStr;
+		}
+        $index++;
     }
     $tableFieldsStr = substr($tableFieldsStr, 1);
     echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked> $tableFieldsStr </br>");
@@ -63,6 +80,7 @@ if(isset($_POST['action']) && isset($_POST['object']) && !isset($_POST['fieldSet
     }
 }
 
+// build the query from user selection
 if(isset($_POST['fieldSet']))
 {
     $fieldsetStr = $_POST['fieldSet'];
