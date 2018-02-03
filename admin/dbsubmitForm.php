@@ -1,5 +1,5 @@
 <?php
-require_once("dbparams.php");
+require_once("../assets/php/dbparams.php");
 
 echo("<html>");
 echo("<body>");

@@ -1,20 +1,16 @@
+ <?php
+	$page = 'home';
+	include 'assets/php/header.php';
+?>
+
+<h1>Home</h1>
 <?php
-require_once("dbapi.php");
+			require_once("assets/php/pinXML.php");
+		?>
+		<div id="map"></div>
+		<script src="assets/js/loadPinMap.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlJM57hL-l7y1cu1B94q8y4nTfOrkbgTI&callback=initMap" async defer></script>
 
-
-echo("<html>");
-echo("<body>");
-echo("<p>");
-$result = getPinData();
-echo("start");
-while ( $rows = $result->fetch_assoc() )
-{
-   print_r($rows);
-}
-echo("end");
-echo("</p>");
-echo("</body>");
-echo("</html>");
-
-
+<?php
+	include 'assets/php/footer.php';
 ?>

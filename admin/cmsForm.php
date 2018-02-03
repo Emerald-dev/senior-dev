@@ -3,8 +3,8 @@
 // the right db query to do it.
 // NOTE: this is the flow of the file, it doesnt actually work yet. missing all human interaction code
 
-require_once("dbessential.php");
-require_once("dbfetchInfo.php");
+require_once("../assets/php/dbessential.php");
+require_once("../assets/php/dbfetchInfo.php");
 
 // TODO: should pull objects from db directly instead of using manually configured array
 
