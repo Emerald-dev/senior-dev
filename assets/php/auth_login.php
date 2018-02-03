@@ -17,12 +17,12 @@ $saltedPass = $enteredPassword . $userStoredSalt;
 $passhash = hash('sha256', $saltedPass);
 if(strtolower($passhash) == strtolower($userStoredPassHash))
 {
-    header('Location: ' . "success.php", true, 302);
+    header('Location: ' . "admin/cmsForm.php", true, 302);
     exit();
 }
 else
 {
-    header('Location: ' . "failure.php", true, 302);
+    header('Location: ' . "admin/login.php?success=failed", true, 302);
     exit();
 }
 
