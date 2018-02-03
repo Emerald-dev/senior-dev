@@ -15,11 +15,11 @@ $objects = array("users", "pins", "content");
 
 if(isset($_POST['fieldSet']))
 {
-    echo("<form action='/dbformSubmit.php' method='post'>");
+    echo("<form action='./dbformSubmit.php' method='post'>");
 }
 else
 {
-    echo("<form action='/dbaccessForm.php' method='post'>");
+    echo("<form action='./cmsForm.php' method='post'>");
 }
 
 if(!isset($_POST['action']) || !isset($_POST['object']))
@@ -80,7 +80,7 @@ if(isset($_POST['fieldSet']))
             $builtQuery = $builtQuery . $field . ", ";
         }
         $builtQuery = substr($builtQuery, 0, -2);
-        $builtQuery = $builtQuery + ") values(";
+        $builtQuery = $builtQuery . ") values(";
         foreach($fieldset as $field)
         {
             $builtQuery = $builtQuery . $_POST[$field] . ", ";
@@ -96,7 +96,7 @@ if(isset($_POST['fieldSet']))
             $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . ",";
         }
         $builtQuery = substr($builtQuery, 0, -1);
-        $builtQuery = $builtQuery + " where ";
+        $builtQuery = $builtQuery . " where ";
     }
     if($selectedAction == "delete")
     {
@@ -106,7 +106,7 @@ if(isset($_POST['fieldSet']))
             $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . " and";
         }
         $builtQuery = substr($builtQuery, 0, -3);
-        $builtQuery = $builtQuery + ";";
+        $builtQuery = $builtQuery . ";";
     }
     echo("<input type='radio' name='fullQuery' value='$builtQuery' checked>$builtQuery</br>");
 }
