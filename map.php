@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0" charset="utf-8" />
     <style>
         #map {
             height: 100%;
