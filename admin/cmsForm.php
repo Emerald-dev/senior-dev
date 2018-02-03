@@ -44,22 +44,49 @@ if(isset($_POST['action']) && isset($_POST['object']) && !isset($_POST['fieldSet
     echo("<input type='radio' name='action' value='$action' checked> $action </br>");
     echo("<input type='radio' name='object' value='$object' checked> $object </br>");
 
+    if($action == "update" || $action == "delete")
+    {
+        $namefield = "";
+        if($object == "users")
+        {
+            $namefield = "username";
+        }
+        else if($object == "pins")
+        {
+            $namefield = "name";
+        }
+        $fetchCurrent = "select " . $namefield . " from " . $object;
+        $currentResults = performActionOnDB($fetchCurrent);
+        echo("<input type='radio' name='namefield' value='$namefield' checked> $namefield </br>");
+        echo("Which existing " . $object . " do you want to edit? </br>");
+        while($row = $currentResults->fetch_assoc()) {
+            echo("<input type='radio' name='updatingObject' value='{$row[$namefield]}'> {$row[$namefield]}");
+        }
+        echo("</br></br>");
+    }
     $selectedAction = $_POST['action']; // human interaction to select action
     $selectedObject = $_POST['object']; // human interaction to select object
-    $tableFields = getTableFields($selectedObject);
-    $tableFieldsStr = "";
-    foreach($tableFields as $fieldStr)
+    if($action == "delete")
     {
-        $tableFieldsStr = $tableFieldsStr . "-" . $fieldStr;
+                echo("<input type='radio' name='fieldSet' value='deleting' checked> the selected user will be deleted</br>");
     }
-    $tableFieldsStr = substr($tableFieldsStr, 1);
-    echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked> $tableFieldsStr </br>");
-    echo("</br></br>");
-    foreach($tableFields as $field)
+    else
     {
-        echo("$field <br />");
-        echo("<input type='text' name='$field'>");
-        echo("<br/>");
+        $tableFields = getTableFields($selectedObject);
+        $tableFieldsStr = "";
+        foreach($tableFields as $fieldStr)
+        {
+            $tableFieldsStr = $tableFieldsStr . "-" . $fieldStr;
+        }
+        $tableFieldsStr = substr($tableFieldsStr, 1);
+        echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked> $tableFieldsStr </br>");
+        echo("</br></br>");
+        foreach($tableFields as $field)
+        {
+            echo("$field <br />");
+            echo("<input type='text' name='$field'>");
+            echo("<br/>");
+        }
     }
 }
 
@@ -68,6 +95,13 @@ if(isset($_POST['fieldSet']))
     $fieldsetStr = $_POST['fieldSet'];
     $selectedAction = $_POST['action']; // human interaction to select action
     $selectedObject = $_POST['object']; // human interaction to select object
+    $updateField = "";
+    $itemToUpdate = "";
+    if(isset($_POST['updatingObject']) && isset($_POST['namefield']))
+    {
+        $itemToUpdate = $_POST['updatingObject'];
+        $updateField = $_POST['namefield'];
+    }
     $fieldset = explode("-", $fieldsetStr);
 
     //populate form here with table fields
@@ -98,19 +132,23 @@ if(isset($_POST['fieldSet']))
         $builtQuery = "Update " . $selectedObject . " set ";
         foreach($fieldset as $field)
         {
-            $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . ",";
+            $postvar = $_POST[$field];
+            if(!ctype_digit($postvar))
+            {
+                $postvar = $field . '="' . $postvar . '"';
+            }
+            else
+            {
+                $postvar = $field . '=' . $postvar;
+            }
+            $builtQuery = $builtQuery . $postvar  . ",";
         }
         $builtQuery = substr($builtQuery, 0, -1);
-        $builtQuery = $builtQuery . " where ";
+        $builtQuery = $builtQuery . " where "  . $updateField . '="' . $itemToUpdate . '"';
     }
     if($selectedAction == "delete")
     {
-        $builtQuery = "Delete from " . $selectedObject . " where ";
-        foreach($fieldset as $field)
-        {
-            $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . " and";
-        }
-        $builtQuery = substr($builtQuery, 0, -3);
+        $builtQuery = "Delete from " . $selectedObject . " where " . $updateField . '="' . $itemToUpdate . '"';
     }
     echo("<input type='radio' name='fullQuery' value='$builtQuery' checked>$builtQuery</br>");
 }
