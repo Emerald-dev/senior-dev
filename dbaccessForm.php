@@ -74,19 +74,39 @@ if(isset($_POST['fieldSet']))
     $builtQuery = "";
     if($selectedAction == "create")
     {
-        $builtQuery = "Insert into " . $selectedObject . " where ";
+        $builtQuery = "Insert into " . $selectedObject . " (";
+        foreach($fieldset as $field)
+        {
+            $builtQuery = $builtQuery . $field . ", ";
+        }
+        $builtQuery = substr($builtQuery, 0, -1);
+        $builtQuery = $builtQuery + ") values("
+        foreach($fieldset as $field)
+        {
+            $builtQuery = $builtQuery . $_POST[$field] . ", ";
+        }
+        $builtQuery = substr($builtQuery, 0, -1);
+        $builtQuery = $builtQuery . ");";
     }
     if($selectedAction == "update")
     {
         $builtQuery = "Update " . $selectedObject . " set ";
+        foreach($fieldset as $field)
+        {
+            $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . ",";
+        }
+        $builtQuery = substr($builtQuery, 0, -1);
+        $builtQuery = $builtQuery + " where "
     }
     if($selectedAction == "delete")
     {
         $builtQuery = "Delete from " . $selectedObject . " where ";
-    }
-    foreach($fieldset as $field)
-    {
-        $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . " ";
+        foreach($fieldset as $field)
+        {
+            $builtQuery = $builtQuery . " " . $field . "=" . $_POST[$field] . " and";
+        }
+        $builtQuery = substr($builtQuery, 0, -3);
+        $builtQuery = $builtQuery + ";";
     }
     echo("<input type='radio' name='fullQuery' value='$builtQuery' checked>$builtQuery</br>");
 }
