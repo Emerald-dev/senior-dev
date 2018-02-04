@@ -11,7 +11,6 @@ $object = $_POST['object'];
 $updatingPage = $_POST['updatingPage'];
 $namefield = $_POST['namefield'];
 
-echo($sql);
 echo("<br/><br/>");
 
 // create connection
@@ -21,6 +20,25 @@ $conn = getDBConnection();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+if(isset($_POST['preQuery']))
+{
+    $presql = $_POST['preQuery'];
+    $resultPre = $conn->query($presql);
+
+    if($conn->affected_rows < 1)
+    {
+        echo("pre-query update database operation failed. something went wrong </br></br>");
+        echo "Query: " . $presql . "</br></br>";
+        echo "Errno: " . $conn->errno . "</br></br>";
+        echo "Error: " . $conn->error . "</br></br>";
+    }
+    else
+    {
+    }
+    echo("</p>");
+}
+
 
 $result = $conn->query($sql);
 

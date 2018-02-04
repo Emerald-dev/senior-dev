@@ -17,6 +17,10 @@ $getContent = 'select id,dataType,text from content where page ="' . $updatingPa
 $pageSections = performActionOnDB($getContent);
 
 $submitAction = "";
+if($action == "create")
+{
+    $submitAction  = "./multiObjectCreate.php";
+}
 if($action == "update")
 {
     $submitAction = "./multiObjectUpdate.php";
