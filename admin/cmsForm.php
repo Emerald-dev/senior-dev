@@ -1,7 +1,7 @@
 <?php
 // This is a query builder for the DB. anything the user might want to do, this should build
 // the right db query to do it.
-// NOTE: this is the flow of the file, it doesnt actually work yet. missing all human interaction code
+// NOTE: this is the flow of the file, it doesn't actually work yet. missing all human interaction code
 
 require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");

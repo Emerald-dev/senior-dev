@@ -4,7 +4,7 @@ require_once('dbessential.php');
 
 function getPinData()
 {
-   $sql = "SELECT * FROM pins";
+   $sql = "SELECT * FROM pins;";
    return  performActionOnDB($sql);
 
 }
@@ -12,7 +12,6 @@ function getPinData()
 function getUser($username){
    $sql = 'SELECT * FROM users WHERE username = "' . $username . '"';
    return  performActionOnDB($sql);
-
 }
 
  function getContent($page){

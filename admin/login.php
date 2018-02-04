@@ -8,5 +8,4 @@ $loginFailed = $_GET['success'] == 'failed';
 if($loginFailed){
     echo('<div class="error">Your user name or password is incorrect. Please contact the site Administrator if you need to reset your password.</div>');
 }
-
 ?>
