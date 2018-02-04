@@ -6,6 +6,6 @@ echo("<input type='password' name='pass' value=''> password </br>");
 echo("<input type='submit' value='submit'>");
 $loginFailed = $_GET['success'] == 'failed';
 if($loginFailed){
-	echo('<div class="error">Your user name or password is incorrect. Please contact the site Administrator if you need to reset your password.</div>');
+    echo('<div class="error">Your user name or password is incorrect. Please contact the site Administrator if you need to reset your password.</div>');
 }
 ?>
