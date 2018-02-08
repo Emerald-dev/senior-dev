@@ -1,5 +1,5 @@
  <?php
-	$page = 'Nearby_Historical_Trails';
+	$page = 'nearbyhis';
 	include 'assets/php/header.php';
 	
 ?>

@@ -1,5 +1,5 @@
  <?php
-	$page = 'Tombstones_&_Natural_History';
+	$page = 'tombstones';
 	include 'assets/php/header.php';
 ?>
 
