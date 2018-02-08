@@ -7,10 +7,18 @@ require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");
 require_once("../assets/php/dbfetchInfo.php");
 require_once("../assets/php/dbAPI.php");
+
+$currentUser = $_COOKIE['username'];
+
+// redirect the user to login if they are not logged in
+if(!$currentUser){
+		 header('Location: ' . "login.php");
+}
+
 echo("<form action='./decision.php' method='post'>");
 echo("Select the item you would like to change: </br>");    
 // allow them to edit users if they have permission to 
-$currentUser = $_COOKIE['username'];
+
 //$currentUser = "test";
 $userData = getUser($currentUser);
 if ($userData->num_rows > 0) {
