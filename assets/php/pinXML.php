@@ -1,35 +1,34 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Claire
- * Date: 2/2/2018
- * Time: 11:32 PM
- */
 
 require_once("dbapi.php");
 //Create XML file
 $dom = new DOMDocument("1.0");
-$node = $dom->createElement("pin");
+
+$dom->formatOutput = true;
+
+$node = $dom->createElement("pins");
 $parnode = $dom->appendChild($node);
 
-//
-header("Content-type: text/xml");
+$result = getPinData();
 
-// Iterate through the rows, adding XML nodes for each
+$fieldArray = array();
 
-while ($row = getPinData()){
-    // Add to XML document node
-    $node = $dom->createElement("pin");
-    $newnode = $parnode->appendChild($node);
-    $newnode->setAttribute("lat",$row['lat']);
-    $newnode->setAttribute("lon",$row['lon']);
-    $newnode->setAttribute("filters", $row['filters']);
-    $newnode->setAttribute("image", $row['image']);
-    $newnode->setAttribute("name", $row['name']);
-    $newnode->setAttribute("summary", $row['summary']);
-    $newnode->setAttribute("content", $row['content']);
-}
-
-echo $dom->saveXML();
+	while ($tableRow = $result->fetch_assoc()) {
+		$node = $dom->createElement("pin");
+		$fieldArray['lat'] = $tableRow['lat'];
+		$fieldArray['lon'] = $tableRow['lon'];
+		$fieldArray['filters'] = $tableRow['filters'];
+		$fieldArray['image'] = $tableRow['image'];
+		$fieldArray['name'] = $tableRow['name'];
+		$fieldArray['summary'] = $tableRow['summary'];
+		$fieldArray['content'] = $tableRow['content'];
+		
+			foreach($fieldArray as $key => $value) {
+				$newnode = $parnode->appendChild($node);
+				$newnode->setAttribute($key,$value);
+				}
+    }
+	
+echo $dom->save("pins.xml");
 
 ?>
