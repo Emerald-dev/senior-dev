@@ -1,5 +1,6 @@
  <?php
 	$page = 'tombstones';
+	$name = 'Tombstones_&_Natural_History';
 	include 'assets/php/header.php';
 ?>
 

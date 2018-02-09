@@ -2,7 +2,7 @@
 	
 	require_once("cleanXML.php");
 	
-	$result = getContent($page);
+	$result = getContent($name);
 	$fieldArray = array();
 	
 	$dom = new DOMDocument;
