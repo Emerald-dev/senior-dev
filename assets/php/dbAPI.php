@@ -19,4 +19,30 @@ function getUser($username){
    return  performActionOnDB($sql);
 }
 
+
+/**
+ * Returns all of the unique filters from the pins table to be used for the map
+ */
+function getFilters(){
+    $sql = "SELECT DISTINCT filters FROM pins";
+    $result = performActionOnDB($sql);
+
+    $filterArray = array();
+
+    while($row = $result->fetch_assoc())
+    {
+        $temp = explode(',',$row);
+        foreach ($temp as $filter){
+            array_push($filterArray,$filter);
+        }
+    }
+    return array_unique($filterArray);
+}
+
+/**
+ * Returns the pins based on the filter information
+ */
+function getFilteredPins(){
+
+}
 ?>
