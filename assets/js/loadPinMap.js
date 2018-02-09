@@ -1,8 +1,8 @@
 var map,currLocation;
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 43.0861, lng: -77.6705},
-		zoom: 16
+		center: {lat: 43.129368, lng: -77.639331},
+		zoom: 19
 	});
 	var infoWindow = new google.maps.InfoWindow;
 
@@ -51,7 +51,7 @@ function initMap() {
 			infowincontent.appendChild(document.createElement('br'));
 
 			var text = document.createElement('text');
-			text.textContent = content;
+			text.textContent = summary;
 			infowincontent.appendChild(text);
 			var pin = new google.maps.Marker({
 				map: map,

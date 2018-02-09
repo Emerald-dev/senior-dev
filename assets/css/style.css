@@ -1,3 +1,6 @@
 .current{
     font-weight: bold;
 }
+#map {
+    height: 500px;
+}
