@@ -42,7 +42,7 @@
 					$template->appendXML("<h2>{$clean2}</h2>");
 					break;
 				case 'Small_Title':
-					$template->appendXML("<h2>{$clean2}</h2>");
+					$template->appendXML("<h3>{$clean2}</h3>");
 					break;
 				case 'Paragraph':
 					$template->appendXML("<p>{$clean2}</p>");
