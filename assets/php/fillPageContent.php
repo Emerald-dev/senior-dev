@@ -23,29 +23,37 @@
 		}
 		
 		for($i = 0; $i<count($fieldArray); $i+=2) {
-				$cursor = $i+1;
-				$clean1 = cleanXML($fieldArray[$i]);
-				$clean2 = cleanXML($fieldArray[$cursor]);
-				$template = $dom->createDocumentFragment();
-				
-				
-				if (preg_match('/(\.jpg|\.png|\.jpeg\.gif)$/i', $clean2)) {
-				   $template->appendXML("<div class = '{$clean1}'><img src='{$clean2}'/></div>");
-				   $template->appendXML("<br />");
-					echo 'It was an image';
-				} else if (filter_var($clean2, FILTER_VALIDATE_URL)){
-				   $template->appendXML("<div class = '{$clean1}'><a href='{$clean2}'>{$clean2}</a></div>");
-				   $template->appendXML("<br />");
-					echo 'It was a link';
-				} else {
-				   $template->appendXML("<div class = '{$clean1}'>{$clean2}</div>");
-				   $template->appendXML("<br />");
-					echo "Doesn't seem like anything to me";
-				}
-				
-				
-				$body->appendChild($template);
-				}
+			$cursor = $i+1;
+			$clean1 = cleanXML($fieldArray[$i]);
+			$clean2 = cleanXML($fieldArray[$cursor]);
+			$template = $dom->createDocumentFragment();
+			
+			switch ($clean1) {
+				case 'Image':
+					$template->appendXML("<img src='{$clean2}' alt='{$name}'/>");
+					break;
+				case 'Link':
+					$template->appendXML("<a href='{$clean2}'>{$clean2}</a>");
+					break;
+				case 'Large_Title':
+					$template->appendXML("<h1>{$clean2}</h1>");
+					break;
+				case 'Medium_Title':
+					$template->appendXML("<h2>{$clean2}</h2>");
+					break;
+				case 'Small_Title':
+					$template->appendXML("<h2>{$clean2}</h2>");
+					break;
+				case 'Paragraph':
+					$template->appendXML("<p>{$clean2}</p>");
+					break;
+				default:
+					$template->appendXML("<p>{$clean2}</p>");
+					break;
+			}
+			
+			$body->appendChild($template);
+		}
    
 	echo $dom->saveXml();
 	
