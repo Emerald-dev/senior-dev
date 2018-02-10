@@ -6,8 +6,8 @@
 	$fieldArray = array();
 	
 	$dom = new DOMDocument;
-	$dom->loadXml('<html><body/></html>');
-	$body = $dom->documentElement->firstChild;
+	$dom->loadXml('<div class="content"></div>');
+	$body = $dom->documentElement;
 	
 	$supported_image = array(
 		'gif',
