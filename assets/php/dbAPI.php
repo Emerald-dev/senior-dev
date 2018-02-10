@@ -31,18 +31,16 @@ function getFilters(){
 
     while($row = $result->fetch_assoc())
     {
-        $temp = explode(',',$row);
-        foreach ($temp as $filter){
-            array_push($filterArray,$filter);
+        if(gettype($row) == "array"){
+            foreach ($row as $item){
+                $temp = explode(", ",$item);
+                foreach ($temp as $filter){
+                    $filterArray[] = $filter;
+                }
+            }
+        }elseif(gettype($row) == "string"){
+            $filterArray[] = $row;
         }
     }
     return array_unique($filterArray);
 }
-
-/**
- * Returns the pins based on the filter information
- */
-function getFilteredPins(){
-
-}
-?>

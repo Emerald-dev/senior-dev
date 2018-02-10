@@ -1,4 +1,5 @@
 var map,currLocation;
+var pinsArray = [];
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 43.0861, lng: -77.6705},
@@ -29,7 +30,6 @@ function initMap() {
 		handleLocationError(false, infoWindow, map.getCenter());
 	}
 
-
 	downloadUrl('pins.xml', function(data) { //get proper pin xml name.
 		var xml = data.responseXML;
 		var pins = xml.documentElement.getElementsByTagName('pin');
@@ -55,14 +55,40 @@ function initMap() {
 			infowincontent.appendChild(text);
 			var pin = new google.maps.Marker({
 				map: map,
+				filters: filters,
 				position: point
 			});
+            pinsArray.push(pin);
 			pin.addListener('click', function() {
 				infoWindow.setContent(infowincontent);
 				infoWindow.open(map, pin);
 			});
 		});
 	});
+}
+
+function filterPins(){
+    var filters = document.getElementsByClassName('filter');
+    var currFilters = [];
+    for (var i = 0; i < filters.length; i++) {
+    	var checkbox = filters[i].firstChild;
+        if(checkbox.checked){
+			currFilters.push(checkbox.nextSibling.innerHTML);
+		}
+    }
+    for(var j = 0; j < pinsArray.length; j++){
+		var pin = pinsArray[j];
+		//console.log(pin.filters);
+		var pinFilters = pin.filters.split(', ');
+		pinFilters.forEach(function (element) {
+			if(currFilters.includes(element)){
+				pin.setVisible(true);
+				return;
+			}else {
+				pin.setVisible(false);
+			}
+		});
+	}
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
