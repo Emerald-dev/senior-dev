@@ -6,7 +6,7 @@
 ?>
 
 <?php
-	require_once("assets/php/dbapi.php");
+	require_once("assets/php/dbAPI.php");
 	require_once("assets/php/fillPageContent.php");
 	
 	include 'assets/php/footer.php';

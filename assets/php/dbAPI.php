@@ -15,7 +15,7 @@ function getUser($username){
 }
 
  function getContent($page){
-   $sql = 'SELECT * FROM Content WHERE page = "' . $page . '"';
+   $sql = 'SELECT * FROM content WHERE page = "' . $page . '"';
    return  performActionOnDB($sql);
 }
 
