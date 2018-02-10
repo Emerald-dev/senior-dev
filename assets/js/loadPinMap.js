@@ -1,8 +1,8 @@
 var map,currLocation;
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 43.0861, lng: -77.6705},
-		zoom: 16
+		center: {lat: 43.129368, lng: -77.639331},
+		zoom: 19
 	});
 	var infoWindow = new google.maps.InfoWindow;
 
@@ -51,8 +51,17 @@ function initMap() {
 			infowincontent.appendChild(document.createElement('br'));
 
 			var text = document.createElement('text');
-			text.textContent = content;
+			text.textContent = summary;
 			infowincontent.appendChild(text);
+
+			infowincontent.appendChild(document.createElement('br'));
+
+			var link = document.createElement('a');
+			link.textContent = "Read more...";
+			link.setAttribute('href','#readmore');
+			link.setAttribute('onclick','loadPinContent('+ '"'+ name + '"'+','+ '"'+ content + '"'+ ')');
+			infowincontent.appendChild(link);
+
 			var pin = new google.maps.Marker({
 				map: map,
 				position: point
@@ -63,6 +72,21 @@ function initMap() {
 			});
 		});
 	});
+}
+
+function loadPinContent(name,content){
+	//clear the div in case something is there
+    document.getElementById('readmore').innerHTML = "";
+
+    var readmore = document.getElementById('readmore');
+
+    var header = document.createElement('h2');
+    header.textContent = name;
+    readmore.appendChild(header);
+
+    var pContent = document.createElement('p');
+    pContent.textContent = content;
+    readmore.appendChild(pContent);
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

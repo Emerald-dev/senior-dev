@@ -9,8 +9,8 @@ require_once("../assets/php/dbAPI.php");
 echo("<form action='./singleConfirm.php' method='post'>");
 $action = $_POST['action'];
 $object = $_POST['object'];
-echo("<input type='radio' name='action' value='$action' checked> $action </br>");
-echo("<input type='radio' name='object' value='$object' checked> $object </br>");
+echo("<input type='radio' name='action' value='$action' checked hidden></br>");
+echo("<input type='radio' name='object' value='$object' checked hidden></br>");
 $tableFields = getTableFields($object);
 $tableFieldsStr = "";
 foreach($tableFields as $fieldStr)
@@ -18,15 +18,27 @@ foreach($tableFields as $fieldStr)
     $tableFieldsStr = $tableFieldsStr . "-" . $fieldStr;
 }
 $tableFieldsStr = substr($tableFieldsStr, 1);
-echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked> $tableFieldsStr </br>");
+echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked hidden></br>");
 echo("</br></br>");
 foreach($tableFields as $field)
 {
-    echo("$field </br>");
-    echo("<input type='text' name='$field' value=''>");
-    echo("<br/>");
+    if($field == "id" || $field == "salt")
+    {
+            echo("<input type='text' name='$field' value='' hidden>");
+    }
+    else
+    {
+        echo("$field </br>");
+        echo("<input type='text' name='$field' value=''>");
+        echo("<br/>"); 
+    }
 }
 // end
 echo("<input type='submit' value='submit'>");
 echo("</form>");
+
+echo("<form action='./cmsForm.php' method='post'>");
+echo("<input type='submit' value='Cancel and go back'>");
+echo("</form>");
+
 ?>

@@ -20,9 +20,17 @@ echo("<input type='text' name='action' value='$action' hidden>");
 echo("<input type='text' name='object' value='$object' hidden>");
 echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");
 echo("<input type='text' name='namefield' value='$namefield' hidden>");
-echo("<input type='radio' name='fullQuery' value='$builtQuery' checked>$builtQuery</br>");
+echo("<input type='radio' name='fullQuery' value='$builtQuery' checked hidden>$builtQuery</br>");
 // end
 echo("<input type='submit' value='Confirm Delete'>");
+echo("</form>");
+
+echo("<form action='./multiObjectEdit.php' method='post'>");
+echo("<input type='text' name='action' value='$action' hidden>");
+echo("<input type='text' name='object' value='$object' hidden>");
+echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");
+echo("<input type='text' name='namefield' value='$namefield' hidden>");
+echo("<input type='submit' value='Cancel and go back to editing'>");
 echo("</form>");
 
 

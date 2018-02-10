@@ -11,10 +11,10 @@ echo("<form action='./singleConfirm.php' method='post'>");
     $object = $_POST['object'];
     $updatingObject = $_POST['updatingObject'];
     $namefield = $_POST['namefield'];
-    echo("<input type='radio' name='action' value='$action' checked> $action </br>");
-    echo("<input type='radio' name='object' value='$object' checked> $object </br>");
-    echo("<input type='radio' name='updatingObject' value='$updatingObject' checked> $updatingObject </br>");
-    echo("<input type='radio' name='namefield' value='$namefield' checked> $namefield </br>");
+    echo("<input type='radio' name='action' value='$action' checked hidden></br>");
+    echo("<input type='radio' name='object' value='$object' checked hidden></br>");
+    echo("<input type='radio' name='updatingObject' value='$updatingObject' checked hidden></br>");
+    echo("<input type='radio' name='namefield' value='$namefield' checked hidden></br>");
     $tableFields = getTableFields($object);
     $tableFieldsStr = "";
     foreach($tableFields as $fieldStr)
@@ -22,7 +22,7 @@ echo("<form action='./singleConfirm.php' method='post'>");
         $tableFieldsStr = $tableFieldsStr . "-" . $fieldStr;
     }
     $tableFieldsStr = substr($tableFieldsStr, 1);
-    echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked> $tableFieldsStr </br>");
+    echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked hidden></br>");
     $fetchAll = "select * from ". $object. " where "  . $namefield . '="' . $updatingObject . '"';
     $allResults = performActionOnDB($fetchAll);
     $row = $allResults->fetch_assoc();
@@ -38,5 +38,10 @@ echo("<form action='./singleConfirm.php' method='post'>");
 // end
 echo("<input type='submit' value='submit'>");
 echo("</form>");
+
+echo("<form action='./cmsForm.php' method='post'>");
+echo("<input type='submit' value='Cancel and go back'>");
+echo("</form>");
+
 ?>
 
