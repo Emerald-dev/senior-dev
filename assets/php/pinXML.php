@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbapi.php");
+require_once("dbAPI.php");
 //Create XML file
 $dom = new DOMDocument("1.0");
 
