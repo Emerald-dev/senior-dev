@@ -1,5 +1,6 @@
  <?php
 	$page = 'home';
+	$name = 'Home';
 	include 'assets/php/header.php';
 ?>
 
@@ -25,6 +26,8 @@
 		<script src="assets/js/loadPinMap.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlJM57hL-l7y1cu1B94q8y4nTfOrkbgTI&callback=initMap" async defer></script>
         <div id="readmore"></div>
+		
 <?php
+	require_once("assets/php/fillPageContent.php");
 	include 'assets/php/footer.php';
 ?>

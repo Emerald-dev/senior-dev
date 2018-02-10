@@ -15,7 +15,7 @@ $dataType = $_POST['dataType'];
 $text_field = $_POST['text_field'];
 $id_field = $_POST['id_field'];
 //populate form here with table fields
-$builtQuery = "delete from pages where id=$id_field";
+$builtQuery = "delete from content where id=$id_field";
 echo("<input type='text' name='action' value='$action' hidden>");
 echo("<input type='text' name='object' value='$object' hidden>");
 echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");

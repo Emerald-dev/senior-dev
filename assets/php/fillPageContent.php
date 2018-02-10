@@ -29,7 +29,7 @@
 				$template = $dom->createDocumentFragment();
 				
 				
-				if (preg_match('/(\.jpg|\.png|\.bmp)$/i', $clean2)) {
+				if (preg_match('/(\.jpg|\.png|\.jpeg\.gif)$/i', $clean2)) {
 				   $template->appendXML("<div class = '{$clean1}'><img src='{$clean2}'/></div>");
 				   $template->appendXML("<br />");
 					echo 'It was an image';
