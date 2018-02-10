@@ -8,12 +8,12 @@ require_once("../assets/php/dbAPI.php");
 echo("<form action='./multiObjectEdit.php' method='post'>");
 $action = $_POST['action'];
 $object = $_POST['object'];
-echo("<input type='radio' name='action' value='$action' checked> $action </br>");
-echo("<input type='radio' name='object' value='$object' checked> $object </br>");
+echo("<input type='radio' name='action' value='$action' checked hidden></br>");
+echo("<input type='radio' name='object' value='$object' checked hidden></br>");
 $namefield = "page";
 $fetchCurrent = "select " . $namefield . " from " . $object;
 $currentResults = performActionOnDB($fetchCurrent);
-echo("<input type='radio' name='namefield' value='$namefield' checked> $namefield </br>");
+echo("<input type='radio' name='namefield' value='$namefield' checked hidden></br>");
 echo("Which " . $object . " do you want to edit? </br>");
 echo("<input type='radio' name='updatingPage' value='Home'> Home </br>");
 echo("<input type='radio' name='updatingPage' value='Tombstones_&_Natural_History'> Tombstones & Natural History </br>");
@@ -23,4 +23,9 @@ echo("</br></br>");
 // end
 echo("<input type='submit' value='submit'>");
 echo("</form>");
+
+echo("<form action='./cmsForm.php' method='post'>");
+echo("<input type='submit' value='Cancel and go back'>");
+echo("</form>");
+
 ?>
