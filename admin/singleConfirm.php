@@ -73,7 +73,7 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
     {
         $builtQuery = "Delete from " . $selectedObject . " where " . $updateField . '="' . $itemToUpdate . '"';
     }
-    echo("<input type='radio' name='fullQuery' value='$builtQuery' checked>$builtQuery</br>");
+    echo("<input type='radio' name='fullQuery' value='$builtQuery' checked hidden> $builtQuery</br>");
 
 
 // end

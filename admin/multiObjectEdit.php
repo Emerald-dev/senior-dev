@@ -9,10 +9,10 @@ $action = $_POST['action'];
 $object = $_POST['object'];
 $updatingPage = $_POST['updatingPage'];
 $namefield = $_POST['namefield'];
-echo("<input type='radio' name='action' value='$action' checked> $action </br>");
-echo("<input type='radio' name='object' value='$object' checked> $object </br>");
-echo("<input type='radio' name='updatingPage' value='$updatingPage' checked> $updatingPage </br>");
-echo("<input type='radio' name='namefield' value='$namefield' checked> $namefield </br>");
+echo("<input type='radio' name='action' value='$action' checked hidden></br>");
+echo("<input type='radio' name='object' value='$object' checked hidden></br>");
+echo("<input type='radio' name='updatingPage' value='$updatingPage' checked hidden> </br>");
+echo("<input type='radio' name='namefield' value='$namefield' checked hidden></br>");
 $getContent = 'select id,dataType,text from content where page ="' . $updatingPage . '"';
 $pageSections = performActionOnDB($getContent);
 
