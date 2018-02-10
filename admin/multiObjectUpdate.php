@@ -15,6 +15,8 @@ $dataType = $_POST['dataType'];
 $text_field = $_POST['text_field'];
 $id_field = $_POST['id_field'];
 //populate form here with table fields
+$dataType = filter_var($dataType, FILTER_SANITIZE_STRING);
+$text_field = filter_var($text_field, FILTER_SANITIZE_STRING); 
 $builtQuery = "Update " . $object . ' set dataType="' . $dataType  .'",text="' . $text_field . '"';
 $builtQuery = $builtQuery . " where id=$id_field";
 echo("<input type='text' name='action' value='$action' hidden>");

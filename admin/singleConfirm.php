@@ -35,10 +35,12 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
             $postvar = $_POST[$field];
             if($field == "password" && isset($_POST['salt']))
             {
+                $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
                 $postvar = getHashedPass($postvar, $_POST["salt"]);
             }
             if(!ctype_digit($postvar))
             {
+                $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
                 $postvar = '"' . $postvar . '"';
             }
             $builtQuery = $builtQuery . $postvar . ", ";
@@ -54,10 +56,12 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
             $postvar = $_POST[$field];
             if($field == "password" && isset($_POST['salt']))
             {
+                $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
                 $postvar = getHashedPass($postvar, $_POST["salt"]);
             }
             if(!ctype_digit($postvar))
             {
+                $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
                 $postvar = $field . '="' . $postvar . '"';
             }
             else

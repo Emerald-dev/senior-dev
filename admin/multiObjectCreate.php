@@ -15,6 +15,8 @@ $dataType = $_POST['dataType'];
 $text_field = $_POST['text_field'];
 $id_field = $_POST['id_field'];
 //populate form here with table fields
+$dataType = filter_var($dataType, FILTER_SANITIZE_STRING);
+$text_field = filter_var($text_field, FILTER_SANITIZE_STRING);
 $preQuery = "update " . $object . ' set id=id + 1 where id > ' . $id_field .' ORDER BY id DESC';
 
 $builtQuery = "insert into " . $object . ' (id, page, dataType, text ) VALUES (1+'. $id_field . ',"' . $updatingPage . '","' . $dataType  . '","' . $text_field . '")';
