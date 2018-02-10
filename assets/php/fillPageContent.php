@@ -30,7 +30,7 @@
 			
 			switch ($clean1) {
 				case 'Image':
-					$template->appendXML("<img src='{$clean2}' alt='{$name}'/>");
+					$template->appendXML("<img src='{$clean2}' alt='{$clean2}'/>");
 					break;
 				case 'Link':
 					$template->appendXML("<a href='{$clean2}'>{$clean2}</a>");
