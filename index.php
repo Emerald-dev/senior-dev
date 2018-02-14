@@ -6,13 +6,10 @@
 
 <?php
 	require_once("assets/php/dbAPI.php");
-	require_once("assets/php/fillPageContent.php");
     require_once("assets/php/pinXML.php");
 ?>
 	<div id="filters">
 	<?php
-		require_once("assets/php/dbAPI.php");
-
 		$filters = getFilters();
 
 		foreach ($filters as $filter){
@@ -29,5 +26,6 @@
 	<div id="readmore"></div>
 		
 <?php
+	require_once("assets/php/fillPageContent.php");
 	include 'assets/php/footer.php';
 ?>

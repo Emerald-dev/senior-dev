@@ -19,6 +19,11 @@ function getUser($username){
    return  performActionOnDB($sql);
 }
 
+ function getPageTitle($page){
+   $sql = 'SELECT text FROM content WHERE page = "' . $page . '" AND dataType = "Large_Title"';
+   return  performActionOnDB($sql);
+}
+
 
 /**
  * Returns all of the unique filters from the pins table to be used for the map

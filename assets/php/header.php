@@ -66,7 +66,17 @@
                 </nav>
 		</header>
 		<div id="<?php echo $page?>">
-        
+        <div class='banner'>
+			<?php
+				require_once("dbAPI.php");
+				$result = getPageTitle($name);
+				$data = $result->fetch_assoc();
+				$title = $data['text'];
+		
+				echo "<h1>".$title."</h1>";
+			?>
+		</div>
+		
         
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
