@@ -36,7 +36,7 @@
 					$template->appendXML("<a href='{$clean2}'>{$clean2}</a>");
 					break;
 				case 'Large_Title':
-					$template->appendXML("<h1>{$clean2}</h1>");
+					$template->appendXML("<div class='banner'><h1>{$clean2}</h1></div>");
 					break;
 				case 'Medium_Title':
 					$template->appendXML("<h2>{$clean2}</h2>");
