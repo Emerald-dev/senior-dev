@@ -2,45 +2,5 @@
     font-weight: bold;
 }
 #map {
-  max-width:1000px;
-  margin: 0 auto;
-  height: auto;
-  overflow:hidden;
-  padding-bottom:56.25%;
-  position: relative;
-}
-
-h1, h2, h3{
-  text-align: center;
-}
-
-#readmore, p{
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-}
-
-.banner{
-  background-image:url(/images/banner.jpg);
-  background-repeat:none;
-  height: 250px;
-}
-
-/**
-#frame{
-  float: left;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-}
-**/
-
-img{
-  width:250px;
-  height:250px;
-  margin-left:15px;
+    height: 500px;
 }
