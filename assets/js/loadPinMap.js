@@ -6,6 +6,7 @@ function initMap() {
 		zoom: 19,
         mapTypeId: 'satellite'
     });
+
 	var infoWindow = new google.maps.InfoWindow;
 
 	// Try HTML5 geolocation.
@@ -75,6 +76,12 @@ function initMap() {
 			});
 		});
 	});
+
+	//Creating map listener
+    //Clicking on the map closes the info window
+    google.maps.event.addListener(map, "click", function(event) {
+        infoWindow.close();
+    });
 }
 
 function filterPins() {
