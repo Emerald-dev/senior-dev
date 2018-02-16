@@ -18,12 +18,13 @@ function initMap() {
 			};
 
 			var image = 'images/icons/here.png';
-			var beachMarker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				position: pos,
 				map: map,
 				icon: image
 			});
-			map.setCenter(pos);
+			//The line below sets to the users location by default.
+			//map.setCenter(pos);
 		}, function() {
 			handleLocationError(true, infoWindow, map.getCenter());
 		});
