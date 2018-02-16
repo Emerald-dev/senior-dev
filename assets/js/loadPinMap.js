@@ -3,8 +3,10 @@ var pinsArray = [];
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 43.129368, lng: -77.639331},
-		zoom: 19
-	});
+		zoom: 19,
+        mapTypeId: 'satellite'
+    });
+
 	var infoWindow = new google.maps.InfoWindow;
 
 	// Try HTML5 geolocation.
@@ -16,12 +18,13 @@ function initMap() {
 			};
 
 			var image = 'images/icons/here.png';
-			var beachMarker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				position: pos,
 				map: map,
 				icon: image
 			});
-			map.setCenter(pos);
+			//The line below sets to the users location by default.
+			//map.setCenter(pos);
 		}, function() {
 			handleLocationError(true, infoWindow, map.getCenter());
 		});
@@ -74,6 +77,12 @@ function initMap() {
 			});
 		});
 	});
+
+	//Creating map listener
+    //Clicking on the map closes the info window
+    google.maps.event.addListener(map, "click", function(event) {
+        infoWindow.close();
+    });
 }
 
 function filterPins() {
