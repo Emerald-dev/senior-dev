@@ -3,8 +3,9 @@ var pinsArray = [];
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 43.129368, lng: -77.639331},
-		zoom: 19
-	});
+		zoom: 19,
+        mapTypeId: 'satellite'
+    });
 	var infoWindow = new google.maps.InfoWindow;
 
 	// Try HTML5 geolocation.
