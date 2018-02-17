@@ -83,5 +83,10 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
 // end
 echo("<input type='submit' value='submit'>");
 echo("</form>");
+
+echo("<form action='./cmsForm.php' method='post'>");
+echo("<input type='submit' value='Cancel and go back'>");
+echo("</form>");
+
 ?>
 

@@ -20,16 +20,41 @@ foreach($tableFields as $fieldStr)
 $tableFieldsStr = substr($tableFieldsStr, 1);
 echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked hidden></br>");
 echo("</br></br>");
+
+$characters = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 foreach($tableFields as $field)
 {
-    if($field == "id" || $field == "salt")
+    if($field == "id")
     {
-            echo("<input type='text' name='$field' value='' hidden>");
+        echo("<input type='text' name='$field' value='' hidden>");
+    }
+    else if($field == "salt")
+    {
+        $saltval = '';
+        $max = strlen($characters) - 1;
+        for ($i = 0; $i < 10; $i++) 
+        {
+            $saltval .= $characters[mt_rand(0, $max)];
+        }
+        echo("<input type='text' name='$field' value='$saltval' hidden>");
+    }
+    else if($field == "email")
+    {
+        echo("$field </br>");
+        echo("<input type='email' name='$field' value=''> required");
+        echo("<br/>");
+    }
+    else if($field == "lat" || $field == "lon")
+    {
+        echo("$field </br>");
+        echo("<input type='number' name='$field' value=''> required");
+        echo("<br/>");
     }
     else
     {
         echo("$field </br>");
-        echo("<input type='text' name='$field' value=''>");
+        echo("<input type='text' name='$field' value='' required>");
         echo("<br/>"); 
     }
 }

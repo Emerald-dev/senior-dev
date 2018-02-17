@@ -29,9 +29,60 @@ echo("<form action='./singleConfirm.php' method='post'>");
     echo("</br></br>");
     foreach($tableFields as $field)
     {
-        echo("$field </br>");
-        echo("<input type='text' name='$field' value='{$row[$field]}'>");
-        echo("<br/>");
+        if($field == "id" || $field == "salt")
+        {
+            echo("<input type='text' name='$field' value='{$row[$field]}' readonly hidden>");
+        }
+        else if($field == "password")
+        {
+            echo("$field </br>");
+            echo("<input type='text' name='$field' value=''>");
+            echo("<br/>");
+        }
+        else
+        {
+            $maxlength = 10000;
+            if($field == "username")
+            {
+                $maxlength = 20;
+            }
+            else if($field == "email")
+            {
+                $maxlength = 40;
+            }
+            else if ($field == "name")
+            {
+                $maxlength = 30;
+            }
+            else if ($field == "summary" || $field == "filters")
+            {
+                $maxlength = 255;
+            }
+            else if ($field == "content" || $field == "image")
+            {
+                $maxlength = 16777215;
+            }
+            echo("$field </br>");
+            if($field == "email")
+            {
+                echo("<input type='email' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
+            }
+            else if ($field == "image")
+            {
+                echo("<input type='url' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
+
+            }
+            else if($field == "lat" || $field == "long")
+            {
+                echo("<input type='number' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
+            }
+            else
+            {
+                echo("<input type='text' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
+
+            }
+            echo("<br/>");
+        }
     }
 
 
