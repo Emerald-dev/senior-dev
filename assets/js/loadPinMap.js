@@ -2,8 +2,8 @@ var map,currLocation;
 var pinsArray = [];
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 43.129368, lng: -77.639331},
-		zoom: 19,
+		center: {lat: 43.129468, lng: -77.639331},
+		zoom: 20,
         mapTypeId: 'satellite'
     });
 
@@ -33,6 +33,8 @@ function initMap() {
 		handleLocationError(false, infoWindow, map.getCenter());
 	}
 
+	var openInfoWindow = null;
+	
 	downloadUrl('pins.xml', function(data) { //get proper pin xml name.
 		var xml = data.responseXML;
 		var pins = xml.documentElement.getElementsByTagName('pin');
@@ -62,18 +64,30 @@ function initMap() {
 			var link = document.createElement('a');
 			link.textContent = "Read more...";
 			link.setAttribute('href','#readmore');
-			link.setAttribute('onclick','loadPinContent('+ '"'+ name + '"'+','+ '"'+ content + '"'+ ')');
+			link.setAttribute('onclick','loadPinContent('+ '"'+ name + '"'+','+ '"'+ image + '"'+ ','+ '"'+ content + '"' + ')');
 			infowincontent.appendChild(link);
+
+			var image = 'images/icons/pin.png';
 
 			var pin = new google.maps.Marker({
 				map: map,
 				filters: filters,
-				position: point
+				position: point,
+				icon: image
 			});
             pinsArray.push(pin);
+			
+			var infowindow = new google.maps.InfoWindow({
+				content: infowincontent,
+				maxWidth: 250
+			});
+			
 			pin.addListener('click', function() {
-				infoWindow.setContent(infowincontent);
-				infoWindow.open(map, pin);
+				if (openInfoWindow) {
+					openInfoWindow.close();
+				}
+				infowindow.open(map, pin);
+				openInfoWindow = infowindow;
 			});
 		});
 	});
@@ -81,7 +95,7 @@ function initMap() {
 	//Creating map listener
     //Clicking on the map closes the info window
     google.maps.event.addListener(map, "click", function(event) {
-        infoWindow.close();
+        openInfoWindow.close();
     });
 }
 
@@ -106,7 +120,7 @@ function filterPins() {
 		pin.setVisible(display);
     }
 }
-function loadPinContent(name,content){
+function loadPinContent(name,imageSrc, content){
 	//clear the div in case something is there
     document.getElementById('readmore').innerHTML = "";
 
@@ -115,8 +129,12 @@ function loadPinContent(name,content){
     var header = document.createElement('h2');
     header.textContent = name;
     readmore.appendChild(header);
-
-    var pContent = document.createElement('p');
+	
+	var image = document.createElement('img');
+    image.src = imageSrc;
+    readmore.appendChild(image);
+	
+	var pContent = document.createElement('p');
     pContent.textContent = content;
     readmore.appendChild(pContent);
 }

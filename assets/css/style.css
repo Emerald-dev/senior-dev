@@ -90,7 +90,7 @@ p{
   height: 250px;
   background-position: 50% 45%;
 }
-#tombstones img {
+img {
     width: 33.33%;
     height: auto;
     margin-right: 15px;
@@ -110,7 +110,7 @@ footer {
 }
 
 @media only screen and (max-width: 740px) {
-    #tombstones img {
+    img {
 		width: 100%;
 		margin: 0 0 10px 0;
 		float: none;
