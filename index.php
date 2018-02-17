@@ -5,6 +5,7 @@
 ?>
 
 <?php
+	require_once("assets/php/fillPageContent.php");
 	require_once("assets/php/dbAPI.php");
     require_once("assets/php/pinXML.php");
 ?>
@@ -26,6 +27,5 @@
 	<div id="readmore"></div>
 		
 <?php
-	require_once("assets/php/fillPageContent.php");
 	include 'assets/php/footer.php';
 ?>

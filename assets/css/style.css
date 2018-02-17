@@ -1,6 +1,118 @@
+html, body{
+	background-color: #fffff0;
+	color: #242822;
+}
+
 .current{
     font-weight: bold;
 }
 #map {
-    height: 500px;
+    padding-bottom: 100vh;
+}
+
+h1, h2, h3{
+  text-align: center;
+}
+h1{
+	color: #fffff0;
+	font-family: 'Alegreya', serif;
+    font-weight: 700;
+    line-height: 2.8rem;
+    font-size: 2.8rem;
+    margin: 0 0 43px 0;
+    text-shadow: 1px 1px 10px black;
+	padding: 40px;
+}
+h2{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: normal;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 23px 0;
+}
+h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    text-align: left;
+    margin-right: 20px;
+	font-weight: 600;
+}
+.navbar{
+	background-color: #fffff0;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: normal;
+    font-size: 21px;
+    line-height: 23px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+.navbar-brand{
+	padding-top: 9px;
+	padding-bottom: 9px;
+}
+.navbar a.nav-link{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+    color: #485a40;
+    border-bottom: 3px solid #485A3F;
+    border-top: 1.5px solid #485A3F;
+p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    line-height: 23px;
+    margin: 0 0 12px 0;
+}
+
+#readmore, .content{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+
+.banner{
+  background-image:url("../../images/banner.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  background-position: 50% 45%;
+}
+#tombstones img {
+    width: 33.33%;
+    height: auto;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    float: left;
+}
+
+#nearbyhis img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+footer {
+    padding: 10px 40px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 740px) {
+    #tombstones img {
+		width: 100%;
+		margin: 0 0 10px 0;
+		float: none;
+	}
 }
