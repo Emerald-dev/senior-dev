@@ -4,8 +4,15 @@ function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 43.129468, lng: -77.639331},
 		zoom: 20,
-        mapTypeId: 'satellite'
+        mapTypeId: 'satellite',
+		//disableDefaultUI: true, // a way to quickly hide all controls
+		scaleControl: true,
+		zoomControl: true,
+		zoomControlOptions: {
+		  style: google.maps.ZoomControlStyle.LARGE 
+		}
     });
+	map.setCompassEnabled(true);
 
 	var infoWindow = new google.maps.InfoWindow;
 

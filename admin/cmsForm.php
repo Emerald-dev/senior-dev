@@ -11,13 +11,6 @@ require_once("../assets/php/dbAPI.php");
 $currentUser = $_COOKIE['username'];
 echo($currentUser);
 echo("</br>");
-// redirect the user to login if they are not logged in
-if($currentUser == "")
-{
-		 header('Location: ' . "login.php");
-}
-
-echo("<a href='../assets/php/logout.php'>click here to log out</a>");
 
 echo("<form action='./decision.php' method='post'>");
 echo("Select the item you would like to change: </br>");    

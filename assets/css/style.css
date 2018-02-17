@@ -115,4 +115,11 @@ footer {
 		margin: 0 0 10px 0;
 		float: none;
 	}
+	h1{
+		font-size: 2.2rem;
+	}
+	.navbar, #readmore, .content, footer, h1{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 }

@@ -1,3 +1,11 @@
+<?php
+	// redirect the user to login if they are not logged in
+	if($currentUser == "")
+	{
+		header('Location: ' . "login.php");
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,27 +22,10 @@
         <!-- GLOBAL NAVIGATION -->
 		<header>
             <div>Rapids Cemetery Adimin Site</div>
+			<a href='../assets/php/logout.php'>click here to log out</a>
 		</header>
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    
-		<div class="loginBox">
-		<form action='../assets/php/auth_login.php' method='post'>
-			<input type='text' name='user' value=''> Username </br>
-			<input type='password' name='pass' value=''> password </br>
-			<input type='submit' value='submit'>
-		</form>
-		</div>
-
-		<?php
-		$loginFailed = $_GET['success'] == 'failed';
-		if($loginFailed){
-			echo('<div class="error">Your user name or password is incorrect. Please contact the site Administrator if you need to reset your password.</div>');
-		}
-		?>
-		
-	</body>
-</html>
-
+            
