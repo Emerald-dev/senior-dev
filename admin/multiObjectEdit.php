@@ -4,6 +4,7 @@ require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");
 require_once("../assets/php/dbfetchInfo.php");
 require_once("../assets/php/dbAPI.php");
+echo('<script src="../assets/js/contentEdit.js"></script>');
 // start
 $action = $_POST['action'];
 $object = $_POST['object'];
@@ -38,7 +39,7 @@ $dataTypeList = array('Large_Title', 'Medium_Title', 'Small_Title', 'Link', 'Ima
 // precursor
 if($action == "create")
 {
-    echo("<form action='$submitAction' method='post'>");
+    echo("<form action='$submitAction' method='post' onsubmit='return validateForm(event)'>");
     echo("<input type='text' name='action' value='$action' hidden>");
     echo("<input type='text' name='object' value='$object' hidden>");
     echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");
@@ -51,14 +52,7 @@ if($action == "create")
         echo("<option value='$dtype'>$dtype</option>");
     }
     echo("</select>");
-    if($row['dataType'] == "Link" || $row['dataType'] == "Image")
-    {
-        echo("<input type='url' name='text_field' value=''></br>");
-    }
-    else
-    {
-        echo("<input type='text' name='text_field' value=''></br>");
-    }
+    echo("<input type='text' name='text_field' value=''></br>");
     echo("<input type='submit' value='insert here'>");
     echo("</br></br></br>");
 }
@@ -66,13 +60,12 @@ if($action == "create")
 
 while($row = $pageSections->fetch_assoc())
 {
-    echo("<form action='$submitAction' method='post'>");
+    echo("<form action='$submitAction' method='post' onsubmit='return validateForm(event)'>");
     echo("<input type='text' name='action' value='$action' hidden>");
     echo("<input type='text' name='object' value='$object' hidden>");
     echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");
     echo("<input type='text' name='namefield' value='$namefield' hidden>");
     echo("<input type='text' name='id_field' value='{$row['id']}' hidden>");
-
     if($action == "create")
     {
         echo("{$row['dataType']}");
@@ -93,15 +86,7 @@ while($row = $pageSections->fetch_assoc())
         }
         echo("</select>");
     }
-
-    if($row['dataType'] == "Link" || $row['dataType'] == "Image")
-    {
-        echo("<input type='url' name='text_field' value='{$row['text']}' $readonly></br>");
-    }
-    else
-    {
-        echo("<input type='text' name='text_field' value='{$row['text']}' $readonly></br>");
-    }
+    echo("<input type='text' name='text_field' value='{$row['text']}' $readonly></br>");
     if($action == "create")
     {
         echo("</br></br>");
@@ -111,16 +96,7 @@ while($row = $pageSections->fetch_assoc())
             echo("<option value='$dtype'>$dtype</option>");
         }
         echo("</select>");
-
-        if($row['dataType'] == "Link" || $row['dataType'] == "Image")
-        {
-            echo("<input type='url' name='text_field' value=''></br>");
-        }
-        else
-        {
-            echo("<input type='text' name='text_field' value=''></br>");
-        }
-
+        echo("<input type='text' name='text_field' value=''></br>");
     }
     if($action == "create")
     {
