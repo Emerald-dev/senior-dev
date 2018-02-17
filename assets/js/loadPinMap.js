@@ -96,16 +96,14 @@ function filterPins() {
     }
     for (var j = 0; j < pinsArray.length; j++) {
         var pin = pinsArray[j];
-        //console.log(pin.filters);
         var pinFilters = pin.filters.split(', ');
+		var display = false;
         pinFilters.forEach(function (element) {
-            if (currFilters.includes(element)) {
-                pin.setVisible(true);
-                return;
-            } else {
-                pin.setVisible(false);
-            }
+			if (currFilters.includes(element)) {
+                display = true;
+            } 
         });
+		pin.setVisible(display);
     }
 }
 function loadPinContent(name,content){
