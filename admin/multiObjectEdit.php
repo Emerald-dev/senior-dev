@@ -1,4 +1,5 @@
 <?php
+include 'header.php';
 // requires
 require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");
@@ -45,15 +46,14 @@ if($action == "create")
     echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");
     echo("<input type='text' name='namefield' value='$namefield' hidden>");
     echo("<input type='text' name='id_field' value='0' hidden>");
-    echo("</br></br>");
     echo("<select name='dataType' required>");
     foreach($dataTypeList as $dtype)
     {
         echo("<option value='$dtype'>$dtype</option>");
     }
-    echo("</select>");
-    echo("<input type='text' name='text_field' value=''></br>");
-    echo("<input type='submit' value='insert here'>");
+    echo("</select><br />");
+    echo("<textarea name='text_field' required></textarea><br />");
+    echo("<input type='submit' value='Insert Here'></form>");
     echo("</br></br></br>");
 }
 // end
@@ -68,7 +68,7 @@ while($row = $pageSections->fetch_assoc())
     echo("<input type='text' name='id_field' value='{$row['id']}' hidden>");
     if($action == "create")
     {
-        echo("{$row['dataType']}");
+        echo("<h3>{$row['dataType']}</h3>");
     }
     else
     {
@@ -86,7 +86,7 @@ while($row = $pageSections->fetch_assoc())
         }
         echo("</select>");
     }
-    echo("<input type='text' name='text_field' value='{$row['text']}' $readonly></br>");
+    echo("</br><input type='text' name='text_field' value='{$row['text']}' $readonly required></br>");
     if($action == "create")
     {
         echo("</br></br>");
@@ -96,11 +96,11 @@ while($row = $pageSections->fetch_assoc())
             echo("<option value='$dtype'>$dtype</option>");
         }
         echo("</select>");
-        echo("<input type='text' name='text_field' value=''></br>");
+		echo("<br /><textarea name='text_field' required></textarea><br />");
     }
     if($action == "create")
     {
-        echo("<input type='submit' value='insert here'>");
+        echo("<input type='submit' value='Insert Here'>");
     }
     else
     {
@@ -109,5 +109,6 @@ while($row = $pageSections->fetch_assoc())
     echo("</form>");
     echo("</br></br>");
 }
-echo("<a href='./cmsForm.php'>Done</a>");
+echo("<div class='button'><a href='./cmsForm.php'>Cancel</a></div>");
+include 'footer.php';
 ?>

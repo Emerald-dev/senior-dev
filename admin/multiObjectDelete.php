@@ -1,4 +1,5 @@
 <?php
+include 'header.php';
 // requires
 require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");
@@ -20,7 +21,7 @@ echo("<input type='text' name='action' value='$action' hidden>");
 echo("<input type='text' name='object' value='$object' hidden>");
 echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");
 echo("<input type='text' name='namefield' value='$namefield' hidden>");
-echo("<input type='radio' name='fullQuery' value='$builtQuery' checked hidden>$builtQuery</br>");
+echo("<input type='radio' name='fullQuery' value='$builtQuery' checked hidden>");
 // end
 echo("<input type='submit' value='Confirm Delete'>");
 echo("</form>");
@@ -30,8 +31,8 @@ echo("<input type='text' name='action' value='$action' hidden>");
 echo("<input type='text' name='object' value='$object' hidden>");
 echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");
 echo("<input type='text' name='namefield' value='$namefield' hidden>");
-echo("<input type='submit' value='Cancel and go back to editing'>");
+echo("<br /><input type='submit' value='Cancel Delete'>");
 echo("</form>");
-
+include 'footer.php';
 
 ?>
