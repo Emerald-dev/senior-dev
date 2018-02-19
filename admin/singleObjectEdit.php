@@ -72,18 +72,19 @@ echo("<form action='./singleConfirm.php' method='post'>");
                 echo("<input type='url' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
 
             }
-            else if($field == "lat" || $field == "long")
+            else if($field == "lat" || $field == "lon")
             {
                 echo("<input type='number' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
             }
-			else if($field == "password" || $field == "username")
-            {
-                echo("<input type='text' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
 
-            }
 			else if($field == "content")
             {
-				echo("<textarea name='$field' maxlength='$maxlength'>{$row[$field]}</textarea></br>");
+				echo("<textarea name='$field' maxlength='$maxlength' required>{$row[$field]}</textarea></br>");
+
+            }
+			else if($field == "name" || $field == "username" || $field == "password" || $field == "createPrivilege")
+            {
+				echo("<input type='text' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
 
             }
             else

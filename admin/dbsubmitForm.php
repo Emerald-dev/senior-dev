@@ -23,6 +23,6 @@ else
     echo("<p>Action completed successfully!</p>");
 }
 
-echo("<a href='./cmsForm.php'>return to admin select page </a>");
+echo("<div class='button'><a href='./cmsForm.php'>Back</a></div>");
 include 'footer.php';
 ?>

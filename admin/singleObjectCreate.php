@@ -78,10 +78,16 @@ foreach($tableFields as $field)
 		echo("<textarea name='$field' maxlength='$maxlength'></textarea>");
 		echo("<br/>");
 	}
-    else
+	else if($field == "name" || $field == "username" || $field == "password" || $field == "createPrivilege")
     {
         echo("$field </br>");
         echo("<input type='text' name='$field' value='' maxlength='$maxlength' required>");
+        echo("<br/>"); 
+    }
+    else
+    {
+        echo("$field </br>");
+        echo("<input type='text' name='$field' value='' maxlength='$maxlength'>");
         echo("<br/>"); 
     }
 }

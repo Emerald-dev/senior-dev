@@ -41,6 +41,9 @@ h3 {
     text-align: left;
 	font-weight: 600;
 }
+input:required, textarea:required {
+    border: red solid 1px;
+}
 .navbar{
 	background-color: #fffff0;
 	font-family: 'Roboto Condensed', sans-serif;
@@ -185,6 +188,10 @@ a:hover, a:active, a:focus{
 
 .admin header .button{
 	float: right;
+}
+
+input:read-only {
+    background: lightgray;
 }
 
 @media only screen and (max-width: 740px) {
