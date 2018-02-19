@@ -30,7 +30,7 @@ h2{
     line-height: 1.3rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin: 0 0 23px 0;
+    margin: 40px 0 23px 0;
 }
 h3 {
     font-family: 'Roboto Condensed', sans-serif;
@@ -155,10 +155,8 @@ footer{
 .pins {
     width: 50%;
     float: left;
-    clear: none;
     box-sizing: border-box;
 	text-align: justify;
-	margin-top: 40px;
 }
 .pins img{
 	width: 100%;
