@@ -126,6 +126,30 @@ input[type="radio"], input[type="checkbox"] {
 	margin-left: 20px;
 }
 
+footer{
+	clear: both;
+}
+
+.pins:nth-child(even) {
+    padding-left: 20px;
+	clear: right;
+}
+.pins:nth-child(odd) {
+    padding-right: 20px;
+	clear: left;
+}
+.pins {
+    width: 50%;
+    float: left;
+    clear: none;
+    box-sizing: border-box;
+	text-align: justify;
+	margin-top: 40px;
+}
+.pins img{
+	width: 100%;
+}
+
 @media only screen and (max-width: 740px) {
     img {
 		width: 100%;
@@ -138,5 +162,14 @@ input[type="radio"], input[type="checkbox"] {
 	.admin header, .navbar, #readmore, .content, footer, h1{
 		padding-left: 15px;
 		padding-right: 15px;
+	}
+	.pins:nth-child(even), .pins:nth-child(odd) {
+		padding: 0;
+	}
+	.pins {
+		width: 100%;
+		float: left;
+		clear: none;
+		box-sizing: border-box;
 	}
 }
