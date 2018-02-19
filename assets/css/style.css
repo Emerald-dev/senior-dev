@@ -44,6 +44,16 @@ h3 {
 input:required, textarea:required {
     border: red solid 1px;
 }
+.loginBox input:required{
+	border: black solid 1px;
+}
+.loginBox{
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+	margin-top: 40px;
+}
 .navbar{
 	background-color: #fffff0;
 	font-family: 'Roboto Condensed', sans-serif;
@@ -193,7 +203,10 @@ a:hover, a:active, a:focus{
 input:read-only {
     background: lightgray;
 }
-
+.error{
+	margin-top: 10px;
+	color: red;
+}
 @media only screen and (max-width: 740px) {
     img {
 		width: 100%;

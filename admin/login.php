@@ -7,13 +7,13 @@
             Rochester Cemetery Admin Site
 		</title> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 		<meta charset="utf-8" />
 	</head>
     <body>
         <!-- GLOBAL NAVIGATION -->
 		<header>
-            <div>Rapids Cemetery Admin Site</div>
+            <br /><br /><h2>Rapids Cemetery Admin Site</h2>
 		</header>
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
@@ -22,11 +22,13 @@
     
 		<div class="loginBox">
 		<form action='../assets/php/auth_login.php' method='post'>
-			<input type='text' name='user' value=''> Username </br>
-			<input type='password' name='pass' value=''> password </br>
+			Username <br />
+			<input type='text' name='user' value='' required> <br /><br />
+			Password <br />
+			<input type='password' name='pass' value='' required>  <br /><br />
 			<input type='submit' value='submit'>
 		</form>
-		</div>
+		
 
 		<?php
 		if(isset($_GET['success'])){
@@ -36,6 +38,8 @@
 			}
 		}
 		?>
+		
+		</div>
 		
 	</body>
 </html>
