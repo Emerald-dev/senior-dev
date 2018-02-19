@@ -33,7 +33,7 @@
 					$template->appendXML("<img src='{$clean2}' alt='{$clean2}'/>");
 					break;
 				case 'Link':
-					$template->appendXML("<a href='{$clean2}'>{$clean2}</a>");
+					$template->appendXML("<p><a href='{$clean2}'>{$clean2}</a></p>");
 					break;
 				case 'Large_Title':
 					$template->appendXML("<!-- h1 was here -->");

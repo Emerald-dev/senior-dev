@@ -4,30 +4,28 @@ $action = $_POST['action'];
 if($object == "content")
 {
     echo("<form action='./multiObjectSelect.php' method='post'>");
-    echo("<p>This is the menu to:</p>");
-    echo("<input type='text' name='action' value='$action' readonly></br>");
-    echo("<input type='text' name='object' value='$object' readonly></br>");
-    echo("<input type='submit' value='Click here to continue'>");
+    echo("<input type='text' name='action' value='$action' readonly  hidden></br>");
+    echo("<input type='text' name='object' value='$object' readonly hidden></br>");
+    echo("<input type='submit' value='Click here to continue'  hidden>");
     echo("</form>");
 }
 else
 {
     if($action == "create")
     {
-        echo("<form action='./singleObjectCreate.php' method='post'>");
+        echo("<form action='./singleObjectCreate.php' method='post' hidden>");
     }
     else if($action == "update")
     {
-        echo("<form action='./singleObjectSelect.php' method='post'>");
+        echo("<form action='./singleObjectSelect.php' method='post'  hidden>");
     }
     else // delete
     {
-        echo("<form action='./singleObjectDelete.php' method='post'>");
+        echo("<form action='./singleObjectDelete.php' method='post'  hidden>");
     }
-    echo("<p>This is the menu to:</p>");
-    echo("<input type='text' name='action' value='$action' readonly></br>");
-    echo("<input type='text' name='object' value='$object' readonly></br>");
-    echo("<input type='submit' value='Click here to continue'>");
+    echo("<input type='text' name='action' value='$action' readonly  hidden></br>");
+    echo("<input type='text' name='object' value='$object' readonly  hidden ></br>");
+    echo("<input type='submit' value='Click here to continue'  hidden>");
     echo("</form>");
 }
 ?>
