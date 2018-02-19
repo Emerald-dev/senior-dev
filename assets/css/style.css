@@ -81,6 +81,7 @@ p{
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px 40px;
+  clear: both;
 }
 
 .banner{
@@ -128,6 +129,8 @@ input[type="radio"], input[type="checkbox"] {
 
 footer{
 	clear: both;
+	background-color: #242822;
+	color: #fffff0;
 }
 
 .pins:nth-child(even) {
@@ -148,6 +151,14 @@ footer{
 }
 .pins img{
 	width: 100%;
+}
+a{
+	color: green;
+}
+a:hover, a:active, a:focus{
+	opacity: .8;
+	color: green;
+	text-decoration: none;
 }
 
 @media only screen and (max-width: 740px) {
