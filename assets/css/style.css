@@ -21,6 +21,7 @@ html, body{
 #filters {
 	width: 210px;
 	margin-left: 14px;
+	margin-top: -15px;
 }
 .filter label {
 	margin-left: 5px;
