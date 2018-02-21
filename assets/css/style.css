@@ -10,6 +10,22 @@ html, body{
     padding-bottom: 100vh;
 }
 
+.button-group{
+	 padding: 16px;
+	 font-size: 20px;
+	 border: none;
+	 cursor: pointer;
+	 position: relative;
+   display: inline-block;
+}
+#filters {
+	width: 210px;
+	margin-left: 14px;
+}
+.filter label {
+	margin-left: 5px;
+}
+
 h1, h2, h3{
   text-align: center;
 }
@@ -135,7 +151,7 @@ input[type="radio"], input[type="checkbox"] {
     min-width: 0px;
     max-width: none;
     width: auto;
-	margin-left: 20px;
+	margin-left: 10px;
 }
 
 footer{
