@@ -148,13 +148,17 @@ input[type="submit"]{
     max-width: none;
     width: auto;
 }
+
 input[type="radio"], input[type="checkbox"] {
     min-width: 0px;
     max-width: none;
     width: auto;
-	margin-left: 10px;
+		margin-left: 10px;
 }
 
+.dropdownmenu {
+	margin-left: 20px;
+}
 footer{
 	clear: both;
 	background-color: #242822;

@@ -20,7 +20,7 @@
 		$filters = getFilters();
 		foreach ($filters as $filter){
 			echo "<li class='filter'>";
-			echo "<input type=\"checkbox\" name='$filter' value='$filter' checked='checked' onclick='filterPins()'>";
+			echo "<input type=\"checkbox\" name='$filter' value='$filter' checked='checked' onclick='filterPins()' class='dropdownmenu'>";
 			echo "<label for='$filter'>$filter</label>";
 			echo "</li>";
 		}
