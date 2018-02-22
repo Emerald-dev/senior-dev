@@ -1,4 +1,5 @@
 <?php
+include 'header.php';
 // This is a query builder for the DB. anything the user might want to do, this should build
 // the right db query to do it.
 // NOTE: this is the flow of the file, it doesn't actually work yet. missing all human interaction code
@@ -9,18 +10,10 @@ require_once("../assets/php/dbfetchInfo.php");
 require_once("../assets/php/dbAPI.php");
 
 $currentUser = $_COOKIE['username'];
-echo($currentUser);
 echo("</br>");
-// redirect the user to login if they are not logged in
-if($currentUser == "")
-{
-		 header('Location: ' . "login.php");
-}
-
-echo("<a href='../assets/php/logout.php'>click here to log out</a>");
 
 echo("<form action='./decision.php' method='post'>");
-echo("Select the item you would like to change: </br>");    
+echo("<h3>Select the item you would like to change:</h3>");    
 // allow them to edit users if they have permission to 
 
 //$currentUser = "test";
@@ -35,12 +28,13 @@ if ($userData->num_rows > 0) {
 echo("<input type='radio' name='object' value='content' required> Page Content </br>");
 echo("<input type='radio' name='object' value='pins' required> Map Pins </br>");
 echo("<br/>");
-echo("<br/>");
-echo("Select the action you would like to take: </br>");
+echo("<h3>Select the action you would like to take: </h3>");
 echo("<input type='radio' name='action' value='create' required> Create </br>");
 echo("<input type='radio' name='action' value='update' required> Update </br>");
 echo("<input type='radio' name='action' value='delete' required> Delete </br>");
+echo("<br/>");
 echo("<input type='submit' value='submit'>");
 echo("</form>");
+include 'footer.php';
 ?>
 

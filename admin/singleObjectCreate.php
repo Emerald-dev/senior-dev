@@ -1,5 +1,5 @@
 <?php
-
+include 'header.php';
 // requires
 require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");
@@ -9,8 +9,8 @@ require_once("../assets/php/dbAPI.php");
 echo("<form action='./singleConfirm.php' method='post'>");
 $action = $_POST['action'];
 $object = $_POST['object'];
-echo("<input type='radio' name='action' value='$action' checked hidden></br>");
-echo("<input type='radio' name='object' value='$object' checked hidden></br>");
+echo("<input type='radio' name='action' value='$action' checked hidden>");
+echo("<input type='radio' name='object' value='$object' checked hidden>");
 $tableFields = getTableFields($object);
 $tableFieldsStr = "";
 foreach($tableFields as $fieldStr)
@@ -18,13 +18,34 @@ foreach($tableFields as $fieldStr)
     $tableFieldsStr = $tableFieldsStr . "-" . $fieldStr;
 }
 $tableFieldsStr = substr($tableFieldsStr, 1);
-echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked hidden></br>");
-echo("</br></br>");
+echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked hidden>");
 
 $characters = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 foreach($tableFields as $field)
 {
+	$maxlength = 10000;
+	if($field == "username")
+	{
+		$maxlength = 20;
+	}
+	else if($field == "email")
+	{
+		$maxlength = 40;
+	}
+	else if ($field == "name")
+	{
+		$maxlength = 30;
+	}
+	else if ($field == "summary" || $field == "filters")
+	{
+		$maxlength = 255;
+	}
+	else if ($field == "content" || $field == "image")
+	{
+		$maxlength = 16777215;
+	}
+			
     if($field == "id")
     {
         echo("<input type='text' name='$field' value='' hidden>");
@@ -42,28 +63,40 @@ foreach($tableFields as $field)
     else if($field == "email")
     {
         echo("$field </br>");
-        echo("<input type='email' name='$field' value=''> required");
+        echo("<input type='email' name='$field' value='' maxlength='$maxlength' required>");
         echo("<br/>");
     }
     else if($field == "lat" || $field == "lon")
     {
         echo("$field </br>");
-        echo("<input type='number' name='$field' value=''> required");
+        echo("<input type='number' name='$field' value='' maxlength='$maxlength' required>");
         echo("<br/>");
+    }
+	else if($field == "content")
+	{
+		echo("$field </br>");
+		echo("<textarea name='$field' maxlength='$maxlength'></textarea>");
+		echo("<br/>");
+	}
+	else if($field == "name" || $field == "username" || $field == "password" || $field == "createPrivilege")
+    {
+        echo("$field </br>");
+        echo("<input type='text' name='$field' value='' maxlength='$maxlength' required>");
+        echo("<br/>"); 
     }
     else
     {
         echo("$field </br>");
-        echo("<input type='text' name='$field' value='' required>");
+        echo("<input type='text' name='$field' value='' maxlength='$maxlength'>");
         echo("<br/>"); 
     }
 }
 // end
-echo("<input type='submit' value='submit'>");
+echo("<br /><input type='submit' value='Create'>");
 echo("</form>");
 
-echo("<form action='./cmsForm.php' method='post'>");
-echo("<input type='submit' value='Cancel and go back'>");
+echo("<form action='./cmsForm.php' method='post'><br />");
+echo("<input type='submit' value='Cancel'>");
 echo("</form>");
-
+include 'footer.php';
 ?>

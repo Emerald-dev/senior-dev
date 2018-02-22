@@ -7,6 +7,6 @@
 <?php
 	require_once("assets/php/dbAPI.php");
 	require_once("assets/php/fillPageContent.php");
-	
+	require_once("assets/php/getAllTombstones.php");
 	include 'assets/php/footer.php';
 ?>

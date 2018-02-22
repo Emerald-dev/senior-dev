@@ -1,4 +1,5 @@
 <?php
+include 'header.php';
 // requires
 require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");
@@ -11,10 +12,10 @@ echo("<form action='./singleConfirm.php' method='post'>");
     $object = $_POST['object'];
     $updatingObject = $_POST['updatingObject'];
     $namefield = $_POST['namefield'];
-    echo("<input type='radio' name='action' value='$action' checked hidden></br>");
-    echo("<input type='radio' name='object' value='$object' checked hidden></br>");
-    echo("<input type='radio' name='updatingObject' value='$updatingObject' checked hidden></br>");
-    echo("<input type='radio' name='namefield' value='$namefield' checked hidden></br>");
+    echo("<input type='radio' name='action' value='$action' checked hidden>");
+    echo("<input type='radio' name='object' value='$object' checked hidden>");
+    echo("<input type='radio' name='updatingObject' value='$updatingObject' checked hidden>");
+    echo("<input type='radio' name='namefield' value='$namefield' checked hidden>");
     $tableFields = getTableFields($object);
     $tableFieldsStr = "";
     foreach($tableFields as $fieldStr)
@@ -22,11 +23,10 @@ echo("<form action='./singleConfirm.php' method='post'>");
         $tableFieldsStr = $tableFieldsStr . "-" . $fieldStr;
     }
     $tableFieldsStr = substr($tableFieldsStr, 1);
-    echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked hidden></br>");
+    echo("<input type='radio' name='fieldSet' value='$tableFieldsStr' checked hidden>");
     $fetchAll = "select * from ". $object. " where "  . $namefield . '="' . $updatingObject . '"';
     $allResults = performActionOnDB($fetchAll);
     $row = $allResults->fetch_assoc();
-    echo("</br></br>");
     foreach($tableFields as $field)
     {
         if($field == "id" || $field == "salt")
@@ -65,21 +65,31 @@ echo("<form action='./singleConfirm.php' method='post'>");
             echo("$field </br>");
             if($field == "email")
             {
-                echo("<input type='email' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
+                echo("<input type='email' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
             }
             else if ($field == "image")
             {
                 echo("<input type='url' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
 
             }
-            else if($field == "lat" || $field == "long")
+            else if($field == "lat" || $field == "lon")
             {
-                echo("<input type='number' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
+                echo("<input type='number' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
+            }
+
+			else if($field == "content")
+            {
+				echo("<textarea name='$field' maxlength='$maxlength' required>{$row[$field]}</textarea></br>");
+
+            }
+			else if($field == "name" || $field == "username" || $field == "password" || $field == "createPrivilege")
+            {
+				echo("<input type='text' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
+
             }
             else
             {
                 echo("<input type='text' name='$field' value='{$row[$field]}' maxlength='$maxlength'>");
-
             }
             echo("<br/>");
         }
@@ -87,12 +97,12 @@ echo("<form action='./singleConfirm.php' method='post'>");
 
 
 // end
-echo("<input type='submit' value='submit'>");
+echo("<br /><input type='submit' value='Submit Changes'>");
 echo("</form>");
 
-echo("<form action='./cmsForm.php' method='post'>");
-echo("<input type='submit' value='Cancel and go back'>");
+echo("<form action='./cmsForm.php' method='post'><br />");
+echo("<input type='submit' value='Cancel'>");
 echo("</form>");
-
+include 'footer.php';
 ?>
 

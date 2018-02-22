@@ -10,12 +10,29 @@ html, body{
     padding-bottom: 100vh;
 }
 
+.button-group{
+	 padding: 16px;
+	 font-size: 20px;
+	 border: none;
+	 cursor: pointer;
+	 position: relative;
+   display: inline-block;
+}
+#filters {
+	width: 210px;
+	margin-left: 14px;
+	margin-top: -15px;
+}
+.filter label {
+	margin-left: 5px;
+}
+
 h1, h2, h3{
   text-align: center;
 }
 h1{
 	color: #fffff0;
-	font-family: 'Alegreya', serif;
+	font-family: 'Playfair Display', serif;
     font-weight: 700;
     line-height: 2.8rem;
     font-size: 2.8rem;
@@ -30,18 +47,29 @@ h2{
     line-height: 1.3rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin: 0 0 23px 0;
+    margin: 40px 0 23px 0;
 }
 h3 {
     font-family: 'Roboto Condensed', sans-serif;
-    font-weight: normal;
     font-size: 1.2rem;
     line-height: 1.2rem;
     text-transform: uppercase;
-    margin: 0 0 10px 0;
+    margin: 8px 20px 4px 0;
     text-align: left;
-    margin-right: 20px;
 	font-weight: 600;
+}
+input:required, textarea:required {
+    border: red solid 1px;
+}
+.loginBox input:required{
+	border: black solid 1px;
+}
+.loginBox{
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+	margin-top: 40px;
 }
 .navbar{
 	background-color: #fffff0;
@@ -77,10 +105,11 @@ p{
     margin: 0 0 12px 0;
 }
 
-#readmore, .content{
+.admin header,#readmore, .content{
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px 40px;
+  clear: both;
 }
 
 .banner{
@@ -90,7 +119,7 @@ p{
   height: 250px;
   background-position: 50% 45%;
 }
-#tombstones img {
+img {
     width: 33.33%;
     height: auto;
     margin-right: 15px;
@@ -109,10 +138,114 @@ footer {
     text-align: center;
 }
 
+input, textarea{
+    width: 100%;
+    max-width: 500px;
+}
+
+input[type="submit"]{
+    min-width: 150px;
+    max-width: none;
+    width: auto;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    min-width: 0px;
+    max-width: none;
+    width: auto;
+		margin-left: 10px;
+}
+
+.dropdownmenu {
+	margin-left: 20px;
+}
+footer{
+	clear: both;
+	background-color: #242822;
+	color: #fffff0;
+}
+
+.pins:nth-child(even) {
+    padding-left: 20px;
+	clear: right;
+}
+.pins:nth-child(odd) {
+    padding-right: 20px;
+	clear: left;
+}
+.pins {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+	text-align: justify;
+}
+.pins img{
+	width: 100%;
+}
+a{
+	color: green;
+}
+a:hover, a:active, a:focus{
+	opacity: .8;
+	color: green;
+	text-decoration: none;
+}
+.button a{
+	color: green;
+}
+.button a:hover, .button a:active, .button a:focus{
+	opacity: 1;
+	color: green;
+	text-decoration: none;
+}
+.button{
+    border-radius: 4px;
+    border: 2px green solid;
+    width: auto;
+    display: inline;
+    padding: 2px 16px 6px;
+}
+.button:hover, .button:active, .button:focus{
+    box-shadow: inset 1px 1px 7px 0px grey;
+	cursor: pointer;
+}
+
+.admin header h2 {
+    display: inline-block;
+	margin: 8px 0;
+}
+
+.admin header .button{
+	float: right;
+}
+
+input:read-only {
+    background: lightgray;
+}
+.error{
+	margin-top: 10px;
+	color: red;
+}
 @media only screen and (max-width: 740px) {
-    #tombstones img {
+    img {
 		width: 100%;
 		margin: 0 0 10px 0;
 		float: none;
+	}
+	h1{
+		font-size: 2.2rem;
+	}
+	.admin header, .navbar, #readmore, .content, footer, h1{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.pins:nth-child(even), .pins:nth-child(odd) {
+		padding: 0;
+	}
+	.pins {
+		width: 100%;
+		float: left;
+		clear: none;
+		box-sizing: border-box;
 	}
 }

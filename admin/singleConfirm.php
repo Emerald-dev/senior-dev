@@ -1,4 +1,5 @@
 <?php
+include 'header.php';
 // requires
 require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");
@@ -77,16 +78,16 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
     {
         $builtQuery = "Delete from " . $selectedObject . " where " . $updateField . '="' . $itemToUpdate . '"';
     }
-    echo("<input type='radio' name='fullQuery' value='$builtQuery' checked hidden> $builtQuery</br>");
+    echo("<input type='radio' name='fullQuery' value='$builtQuery' checked hidden>");
 
 
 // end
-echo("<input type='submit' value='submit'>");
+echo("<input type='submit' value='Submit ".$selectedAction."'> <br />");
 echo("</form>");
 
 echo("<form action='./cmsForm.php' method='post'>");
-echo("<input type='submit' value='Cancel and go back'>");
+echo("<br /><input type='submit' value='Cancel'>");
 echo("</form>");
-
+include 'footer.php';
 ?>
 
