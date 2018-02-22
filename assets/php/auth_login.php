@@ -14,7 +14,7 @@ $enteredPassword = $_POST['pass'];
 $passhash = getHashedPass($enteredPassword, $userStoredSalt);
 if(strtolower($passhash) == strtolower($userStoredPassHash))
 {
-    setcookie("username", $user, time() + 1500, "/");
+    setcookie("username", $user, time() + 7200, "/");
     header('Location: ' . "../../admin/cmsForm.php", true, 302);
     exit();
 }
