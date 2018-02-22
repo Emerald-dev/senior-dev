@@ -5,7 +5,13 @@ require_once('auth_login_helper.php');
 
 $user = $_POST['user'];
 $getSaltedPass = "select password,salt from users where username = '$user'";
-$result = performActionOnDB($getSaltedPass);
+$result = performActionOnDBLogin($getSaltedPass);
+
+if(!$result)
+{
+    header('Location: ' . "../../admin/login.php?success=failed", true, 302);
+    exit();
+}
 
 $userInfo = $result->fetch_assoc();
 $userStoredPassHash = $userInfo['password'];
