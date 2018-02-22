@@ -10,6 +10,23 @@ html, body{
     padding-bottom: 100vh;
 }
 
+.button-group{
+	 padding: 16px;
+	 font-size: 20px;
+	 border: none;
+	 cursor: pointer;
+	 position: relative;
+   display: inline-block;
+}
+#filters {
+	width: 210px;
+	margin-left: 14px;
+	margin-top: -15px;
+}
+.filter label {
+	margin-left: 5px;
+}
+
 h1, h2, h3{
   text-align: center;
 }
@@ -131,13 +148,17 @@ input[type="submit"]{
     max-width: none;
     width: auto;
 }
+
 input[type="radio"], input[type="checkbox"] {
     min-width: 0px;
     max-width: none;
     width: auto;
-	margin-left: 20px;
+		margin-left: 10px;
 }
 
+.dropdownmenu {
+	margin-left: 20px;
+}
 footer{
 	clear: both;
 	background-color: #242822;
