@@ -1,20 +1,17 @@
-var options = [];
+$('.check-manager').click(function(event) {
+    var id = $(this).text();
 
-$( '.dropdown-menu a' ).on( 'click', function( event ) {
+    id = id.replace(/\s/g, "_");
 
-   var $target = $( event.currentTarget ),
-       val = $target.attr( 'data-value' ),
-       $inp = $target.find( 'input' ),
-       idx;
+    console.log(id);
 
-   if ( ( idx = options.indexOf( val ) ) > -1 ) {
-      options.splice( idx, 1 );
-      setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
-   } else {
-      options.push( val );
-      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
-   }
+    if($('#checks-' + id).is(':checked')) {
+      $('#checks-' + id).attr('checked', false);
+    }
+    else {
+      $('#checks-' + id).attr('checked', true);
+    }
 
-   $( event.target ).blur();
-   return false;
+    filterPins();
+    return false;
 });
