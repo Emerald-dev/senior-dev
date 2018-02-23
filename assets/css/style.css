@@ -20,8 +20,6 @@ html, body{
 }
 #filters {
 	width: 210px;
-	margin-left: 14px;
-	margin-top: -15px;
 }
 .filter label {
 	margin-left: 5px;
@@ -226,6 +224,28 @@ input:read-only {
 	margin-top: 10px;
 	color: red;
 }
+.filters-row .col-lg-12{
+	position: relative;
+    bottom: -60px;
+    z-index: 1;
+    margin-left: 10px;
+}
+.filters-row .btn-sm {
+    padding: .5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: .2rem;
+    height: 50px;
+	box-shadow: 1px 1px 7px black;
+	font-family: 'Roboto', sans-serif;
+}
+.filters-row .btn-sm:hover {
+	cursor: pointer;
+}
+.filters-row .button-group {
+	padding: 0;
+}
+
+
 @media only screen and (max-width: 740px) {
     img {
 		width: 100%;
