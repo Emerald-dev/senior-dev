@@ -36,7 +36,7 @@ echo("<form action='./singleConfirm.php' method='post'>");
         else if($field == "password")
         {
             echo("$field </br>");
-            echo("<input type='text' name='$field' value=''>");
+            echo("<input type='text' name='$field' value='' required>");
             echo("<br/>");
         }
         else
