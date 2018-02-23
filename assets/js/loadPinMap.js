@@ -9,7 +9,7 @@ function initMap() {
 		scaleControl: true,
 		zoomControl: true,
 		zoomControlOptions: {
-		  style: google.maps.ZoomControlStyle.LARGE 
+		  style: google.maps.ZoomControlStyle.LARGE
 		}
     });
 
@@ -40,7 +40,7 @@ function initMap() {
 	}
 
 	var openInfoWindow = null;
-	
+
 	downloadUrl('pins.xml', function(data) { //get proper pin xml name.
 		var xml = data.responseXML;
 		var pins = xml.documentElement.getElementsByTagName('pin');
@@ -82,12 +82,12 @@ function initMap() {
 				icon: image
 			});
             pinsArray.push(pin);
-			
+
 			var infowindow = new google.maps.InfoWindow({
 				content: infowincontent,
 				maxWidth: 250
 			});
-			
+
 			pin.addListener('click', function() {
 				if (openInfoWindow) {
 					openInfoWindow.close();
@@ -121,9 +121,9 @@ function filterPins() {
         pinFilters.forEach(function (element) {
 			if (currFilters.includes(element)) {
                 display = true;
-            } 
+            }
         });
-		pin.setVisible(display);
+				pin.setVisible(display);
     }
 }
 function loadPinContent(name,imageSrc, content){
@@ -135,11 +135,11 @@ function loadPinContent(name,imageSrc, content){
     var header = document.createElement('h2');
     header.textContent = name;
     readmore.appendChild(header);
-	
+
 	var image = document.createElement('img');
     image.src = imageSrc;
     readmore.appendChild(image);
-	
+
 	var pContent = document.createElement('p');
     pContent.textContent = content;
     readmore.appendChild(pContent);
