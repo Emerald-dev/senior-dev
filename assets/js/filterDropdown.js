@@ -3,13 +3,12 @@ $('.check-manager').click(function(event) {
 
     id = id.replace(/\s/g, "_");
 
-    console.log(id);
-
     if($('#checks-' + id).is(':checked')) {
-      $('#checks-' + id).attr('checked', false);
+
+       $('#checks-' + id).prop('checked', false);
     }
     else {
-      $('#checks-' + id).attr('checked', true);
+      $('#checks-' + id).prop('checked', true);
     }
 
     filterPins();

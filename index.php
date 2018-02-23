@@ -12,18 +12,17 @@
 <div class="container">
   <div class="row">
        <div class="col-lg-12">
-     <div id="thisisatestkevin" class="button-group">
-        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Filter</button>
-  <ul id="filters" class="dropdown-menu">
-	<?php
-		$filters = getFilters();
-		foreach ($filters as $filter){
-			echo "<li class='filter'>";
-			echo "<input id='checks-" . str_replace(" ", "_", $filter) . "' type=\"checkbox\" name='$filter' value='$filter' checked='checked' onclick='filterPins()' class='dropdownmenu'>";
-			echo "<label class='check-manager' for='$filter'>$filter</label>";
-			echo "</li>";
-		}
-	?>
+          <div class="button-group">
+            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Filter</button>
+            <ul id="filters" class="dropdown-menu">
+	            <?php
+		            $filters = getFilters();
+		              foreach ($filters as $filter){
+			               echo "<li class='filter'>";
+			               echo "<input id='checks-" . str_replace(" ", "_", $filter) . "' type=\"checkbox\" name='$filter' value='$filter' checked='checked' onclick='filterPins()' class='dropdownmenu'>";
+			                echo "<label class='check-manager' for='$filter'>$filter</label>";
+			                echo "</li>";}
+	               ?>
             </ul>
           </div>
         </div>
