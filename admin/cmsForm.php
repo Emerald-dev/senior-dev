@@ -13,6 +13,7 @@ $currentUser = $_COOKIE['username'];
 echo("</br>");
 
 echo("<form action='./decision.php' method='post'>");
+// select if u want to change a user, pin, or page
 echo("<h3>Select the item you would like to change:</h3>");    
 // allow them to edit users if they have permission to 
 
@@ -29,6 +30,7 @@ echo("<input type='radio' name='object' value='content' required> Page Content <
 echo("<input type='radio' name='object' value='pins' required> Map Pins </br>");
 echo("<br/>");
 echo("<h3>Select the action you would like to take: </h3>");
+// select if you want to perform a create, update, or delete
 echo("<input type='radio' name='action' value='create' required> Create </br>");
 echo("<input type='radio' name='action' value='update' required> Update </br>");
 echo("<input type='radio' name='action' value='delete' required> Delete </br>");

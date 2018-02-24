@@ -31,6 +31,7 @@
 		
 
 		<?php
+        // gets the login status (if set) and prints a message on failure
 		if(isset($_GET['success'])){
 			$loginFailed = $_GET['success'] == 'failed';
 			if($loginFailed){

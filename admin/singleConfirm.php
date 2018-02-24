@@ -24,6 +24,7 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
     $builtQuery = "";
     if($selectedAction == "create")
     {
+        // build creation query to create user or pin in DB
         $builtQuery = "Insert into " . $selectedObject . " (";
         foreach($fieldset as $field)
         {
@@ -33,6 +34,7 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
         $builtQuery = $builtQuery . ") values (";
         foreach($fieldset as $field)
         {
+            // sanatize all of the input
             $postvar = $_POST[$field];
             if($field == "password" && isset($_POST['salt']))
             {
@@ -51,9 +53,11 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
     }
     if($selectedAction == "update")
     {
+        // build update query to update user or pin in DB
         $builtQuery = "Update " . $selectedObject . " set ";
         foreach($fieldset as $field)
         {
+            // sanatize all of the input
             $postvar = $_POST[$field];
             if($field == "password" && isset($_POST['salt']))
             {
@@ -76,6 +80,7 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
     }
     if($selectedAction == "delete")
     {
+        // build deletion query to delete user or pin from DB
         $builtQuery = "Delete from " . $selectedObject . " where " . $updateField . '="' . $itemToUpdate . '"';
     }
     echo("<input type='radio' name='fullQuery' value='$builtQuery' checked hidden>");
@@ -85,6 +90,7 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
 echo("<input type='submit' value='Submit ".$selectedAction."'> <br />");
 echo("</form>");
 
+// cancel button to go back to the main menu
 echo("<form action='./cmsForm.php' method='post'>");
 echo("<br /><input type='submit' value='Cancel'>");
 echo("</form>");

@@ -5,7 +5,7 @@ require_once("../assets/php/auth_login_helper.php");
 require_once("../assets/php/dbessential.php");
 require_once("../assets/php/dbfetchInfo.php");
 require_once("../assets/php/dbAPI.php");
-// start
+// form generation to edit a given user or pin
 echo("<form action='./singleConfirm.php' method='post'>");
 
     $action = $_POST['action'];
@@ -29,6 +29,8 @@ echo("<form action='./singleConfirm.php' method='post'>");
     $row = $allResults->fetch_assoc();
     foreach($tableFields as $field)
     {
+        // perform all the checks and generate the fields for each aspect of a user or pin, also adds restrictions on input size so the user cant
+        // break the database when updating information
         if($field == "id" || $field == "salt")
         {
             echo("<input type='text' name='$field' value='{$row[$field]}' readonly hidden>");
@@ -96,10 +98,11 @@ echo("<form action='./singleConfirm.php' method='post'>");
     }
 
 
-// end
+// submit changes button
 echo("<br /><input type='submit' value='Submit Changes'>");
 echo("</form>");
 
+// cancel button and go back to main menu
 echo("<form action='./cmsForm.php' method='post'><br />");
 echo("<input type='submit' value='Cancel'>");
 echo("</form>");

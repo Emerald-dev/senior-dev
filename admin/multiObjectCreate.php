@@ -20,6 +20,8 @@ $dataType = filter_var($dataType, FILTER_SANITIZE_STRING);
 $text_field = filter_var($text_field, FILTER_SANITIZE_STRING);
 $preQuery = "update " . $object . ' set id=id + 1 where id > ' . $id_field .' ORDER BY id DESC';
 
+
+// builds the DB query for page content creation, and displays the changes to the user to confirm it is what they want to do
 $builtQuery = "insert into " . $object . ' (id, page, dataType, text ) VALUES (1+'. $id_field . ',"' . $updatingPage . '","' . $dataType  . '","' . $text_field . '")';
 echo("<input type='text' name='action' value='$action' hidden>");
 echo("<input type='text' name='object' value='$object' hidden>");

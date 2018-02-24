@@ -17,6 +17,7 @@ $text_field = $_POST['text_field'];
 $id_field = $_POST['id_field'];
 //populate form here with table fields
 $builtQuery = "delete from content where id=$id_field";
+// builds the DB query for page content deletion, and displays the changes to the user to confirm it is what they want to do
 echo("<input type='text' name='action' value='$action' hidden>");
 echo("<input type='text' name='object' value='$object' hidden>");
 echo("<input type='text' name='updatingPage' value='$updatingPage' hidden>");
@@ -25,7 +26,7 @@ echo("<input type='radio' name='fullQuery' value='$builtQuery' checked hidden>")
 // end
 echo("<input type='submit' value='Confirm Delete'>");
 echo("</form>");
-
+// option to cancel the deletion and go back to the editing page
 echo("<form action='./multiObjectEdit.php' method='post'>");
 echo("<input type='text' name='action' value='$action' hidden>");
 echo("<input type='text' name='object' value='$object' hidden>");

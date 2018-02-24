@@ -1,4 +1,8 @@
 <?php
+
+// Based on the choices made on cmsForm.php, this file decides which next page to take you to. 
+// it redirects to that page on load via the JS script at the bottom by submitting the form with the apropriate data
+
 $object = $_POST['object'];
 $action = $_POST['action'];
 if($object == "content")
