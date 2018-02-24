@@ -29,6 +29,6 @@ $fieldArray = array();
 				}
     }
 	
-echo $dom->save("pins.xml");
+$dom->save("pins.xml");
 
 ?>
