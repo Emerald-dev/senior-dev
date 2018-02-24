@@ -53,6 +53,7 @@ function initMap() {
 			var name = pinElem.getAttribute('name');
 			var summary = pinElem.getAttribute('summary');
 			var content = pinElem.getAttribute('content');
+			content = content.replace(/"/g, "'");
 
 
 			var infowincontent = document.createElement('div');
