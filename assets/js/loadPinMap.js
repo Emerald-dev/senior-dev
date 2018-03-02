@@ -1,5 +1,5 @@
 /**
- * This file contains the functions and definitions of loading the map and its various map functions.
+ * This file contains the functions and definitions of loading the map and its various map helper functions.
  */
 var map,currLocation;
 var pinsArray = [];

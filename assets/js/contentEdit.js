@@ -1,4 +1,13 @@
-function validateForm(event) 
+/**
+ * This file contains functions that validate the form
+ */
+
+/**
+ * Function validates the forms and checks to make sure the forms are good.
+ * @param event
+ * @returns {boolean}
+ */
+function validateForm(event)
 {
     const input = event.target.querySelector("textarea");
     const select = event.target.querySelector("select");
@@ -14,7 +23,11 @@ function validateForm(event)
     
 }
 
-
+/**
+ * Regex function that checks to make sure the url is valid
+ * @param str
+ * @returns {boolean}
+ */
 function ValidURL(str) 
 {
   var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
