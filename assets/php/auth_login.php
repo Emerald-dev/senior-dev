@@ -1,5 +1,5 @@
 <?php
-
+//deals with user authentication
 require_once('dbessential.php');
 require_once('auth_login_helper.php');
 
