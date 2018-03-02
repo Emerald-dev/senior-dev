@@ -1,6 +1,17 @@
+/**
+ * This file contains the functions and definitions of loading the map and its various map functions.
+ */
 var map,currLocation;
 var pinsArray = [];
+/**
+ * Map Creation function
+ * Called in index.php
+ */
 function initMap() {
+    /**
+	 * Creates Basic map component
+     * @type {google.maps.Map}
+     */
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 43.129468, lng: -77.639331},
 		zoom: 20,
@@ -13,6 +24,11 @@ function initMap() {
 		}
     });
 
+    /**
+	 * The Info Window displays any errors upon getting the geolocation
+     * @type {google.maps.InfoWindow}
+     */
+
 	var infoWindow = new google.maps.InfoWindow;
 
 	// Try HTML5 geolocation.
@@ -23,14 +39,32 @@ function initMap() {
 				lng: position.coords.longitude
 			};
 
-			var image = 'images/icons/here.png';
-			var marker = new google.maps.Marker({
+			var userMarker = new google.maps.Marker({
 				position: pos,
 				map: map,
-				icon: image
+                icon: {
+                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                    scale: 4
+                }
 			});
-			//The line below sets to the users location by default.
-			//map.setCenter(pos);
+			//Changes the orientation of the userMarker if you move
+            if (window.DeviceOrientationEvent) {
+
+                window.addEventListener('deviceorientation', function(event) {
+                    var alpha = null;
+                    //Check for iOS property
+                    if (event.webkitCompassHeading) {
+                        alpha = event.webkitCompassHeading;
+                    }
+                    //non iOS
+                    else {
+                        alpha = event.alpha;
+                    }
+                    var locationIcon = userMarker.get('icon');
+                    locationIcon.rotation = 360 - alpha;
+                    userMarker.set('icon', locationIcon);
+                }, false);
+            }
 		}, function() {
 			handleLocationError(true, infoWindow, map.getCenter());
 		});
@@ -41,9 +75,15 @@ function initMap() {
 
 	var openInfoWindow = null;
 
+    /**
+	 * Following function loads in the pin data from the pin.xml file that was created by the pinXML.php file.
+     */
 	downloadUrl('pins.xml', function(data) { //get proper pin xml name.
-		var xml = data.responseXML;
-		var pins = xml.documentElement.getElementsByTagName('pin');
+		var xml = data.responseXML; //gets the xml
+		var pins = xml.documentElement.getElementsByTagName('pin'); //grab all of the pin tags
+        /**
+		 * For each pin it creates a point that is added to the map.
+         */
 		Array.prototype.forEach.call(pins, function(pinElem) {
 			var point = new google.maps.LatLng(
 				parseFloat(pinElem.getAttribute('lat')),
@@ -53,9 +93,11 @@ function initMap() {
 			var name = pinElem.getAttribute('name');
 			var summary = pinElem.getAttribute('summary');
 			var content = pinElem.getAttribute('content');
-			content = content.replace(/"/g, "'");
+			content = content.replace(/"/g, "'"); //any content with double quotes is replaced with single quotes to prevent premature closing of functions
 
-
+            /**
+			 * Each pin has the content added as a content window
+             */
 			var infowincontent = document.createElement('div');
 			var strong = document.createElement('strong');
 			strong.textContent = name;
@@ -76,6 +118,7 @@ function initMap() {
 
 			var image = 'images/icons/pin.png';
 
+			// Pin is created and added to a pin array for later reference.
 			var pin = new google.maps.Marker({
 				map: map,
 				filters: filters,
@@ -89,6 +132,7 @@ function initMap() {
 				maxWidth: 250
 			});
 
+			//Added listener that closes the info windows upon clicking on the map
 			pin.addListener('click', function() {
 				if (openInfoWindow) {
 					openInfoWindow.close();
@@ -106,6 +150,9 @@ function initMap() {
     });
 }
 
+/**
+ * Function that filters all the pins
+ */
 function filterPins() {
     var filters = document.getElementsByClassName('filter');
     var currFilters = [];
@@ -127,6 +174,8 @@ function filterPins() {
 				pin.setVisible(display);
     }
 }
+
+//Dynamically created the read me content depending on what is clicked.
 function loadPinContent(name,imageSrc, content){
 	//clear the div in case something is there
     document.getElementById('readmore').innerHTML = "";
@@ -146,6 +195,12 @@ function loadPinContent(name,imageSrc, content){
     readmore.appendChild(pContent);
 }
 
+/**
+ * Function that handles location errors depending on the error
+ * @param browserHasGeolocation
+ * @param infoWindow
+ * @param pos
+ */
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	infoWindow.setPosition(pos);
 	infoWindow.setContent(browserHasGeolocation ?
@@ -154,6 +209,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	infoWindow.open(map);
 }
 
+/**
+ * helper function that does an ajax call to get the xml file
+ * @param url
+ * @param callback
+ */
 function downloadUrl(url,callback) {
 	var request = window.ActiveXObject ?
 		new ActiveXObject('Microsoft.XMLHTTP') :
