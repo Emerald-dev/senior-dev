@@ -1,4 +1,5 @@
 <?php
+//adding the HTML content by name
 function appendHTML(DOMNode $parent, $source) {
     $tmpDoc = new DOMDocument();
     $tmpDoc->loadHTML($source);
