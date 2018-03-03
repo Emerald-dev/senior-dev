@@ -22,7 +22,7 @@
     <body class="admin">
         <!-- GLOBAL NAVIGATION -->
 		<header>
-            <h2>Rapids Cemetery Adimin Site</h2>
+            <h2>Rapids Cemetery Admin Site</h2>
 			<div class="button"><a href='../assets/php/logout.php'>Log Out</a></div>
 		</header>
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
