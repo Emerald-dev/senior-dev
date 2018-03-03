@@ -1,4 +1,5 @@
 <?php
+// Returns the table information about a table given the table name
 require_once("dbessential.php");
 
 /**

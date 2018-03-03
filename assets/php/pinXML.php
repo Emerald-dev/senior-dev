@@ -1,5 +1,5 @@
 <?php
-
+//generates the xml file for the maps pins from the data in the database because Google maps reads in the pins in XML format
 require_once("dbAPI.php");
 //Create XML file
 $dom = new DOMDocument("1.0");

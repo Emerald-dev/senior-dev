@@ -1,5 +1,5 @@
 <?php
-//deals with hashed pasword
+//returns the hashed value of a the password given the $password and $salt
 function getHashedPass($password, $salt)
 {
     $saltedPass = $password . $salt;

@@ -1,5 +1,5 @@
  <?php
- //fill in content and load pins
+ //cleans the entered content to avoid any issues in the HTML
  function cleanXML($htmlStr)
 	{
 	$xmlStr=str_replace('<','&lt;',$htmlStr);

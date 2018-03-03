@@ -1,33 +1,35 @@
 <?php
 //getting the data out of your tables
 require_once('dbessential.php');
-//selecting data from pins table
+
+//returns the all of the data about the map pins
 function getPinData()
 {
    $sql = "SELECT * FROM pins;";
    return  performActionOnDB($sql);
 
 }
-//selecting the data from users table and accepting the variable $username
+
+//returns all of the data about a user related to the given username - $username
 function getUser($username){
    $sql = 'SELECT * FROM users WHERE username = "' . $username . '"';
    return  performActionOnDB($sql);
 }
-//selecting the data from the content table and accepting the variable $page
+
+//returns the page content related to the given page name - $page
  function getContent($page){
    $sql = 'SELECT * FROM content WHERE page = "' . $page . '"';
    return  performActionOnDB($sql);
 }
-//selecting the data for text from the content table and accepting the variable $page 
- function getPageTitle($page){
+
+//returns the page title related to the given page name - $page 
+function getPageTitle($page){
    $sql = 'SELECT text FROM content WHERE page = "' . $page . '" AND dataType = "Large_Title"';
    return  performActionOnDB($sql);
 }
 
 
-/**
- * Returns all of the unique filters from the pins table to be used for the map
- */
+//Returns all of the unique filters from the pins table to be used for the map
 function getFilters(){
     $sql = "SELECT DISTINCT filters FROM pins";
     $result = performActionOnDB($sql);

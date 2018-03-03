@@ -1,5 +1,5 @@
 <?php
-
+//Executes a query on the database and prints out the errors 
 require_once("dbparams.php");
 
 
