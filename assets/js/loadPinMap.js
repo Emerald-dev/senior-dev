@@ -154,24 +154,29 @@ function initMap() {
  * Function that filters all the pins
  */
 function filterPins() {
-    var filters = document.getElementsByClassName('filter');
-    var currFilters = [];
-    for (var i = 0; i < filters.length; i++) {
-        var checkbox = filters[i].firstChild;
-        if (checkbox.checked) {
-            currFilters.push(checkbox.nextSibling.innerHTML);
+    var filterTags = document.getElementsByName('filter');
+    var filter;
+    for (var i = 0, length = filterTags.length; i < length; i++)
+    {
+        if (filterTags[i].checked)
+        {
+            filter = filterTags[i].value;
+            break;
         }
     }
+
     for (var j = 0; j < pinsArray.length; j++) {
         var pin = pinsArray[j];
         var pinFilters = pin.filters.split(', ');
 		var display = false;
         pinFilters.forEach(function (element) {
-			if (currFilters.includes(element)) {
+            if (filter === element) {
                 display = true;
-            }
+            }else if (filter === "Clear Filters"){
+				display = true;
+			}
         });
-				pin.setVisible(display);
+        pin.setVisible(display);
     }
 }
 
