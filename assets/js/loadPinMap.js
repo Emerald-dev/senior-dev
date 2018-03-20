@@ -88,12 +88,11 @@ function initMap() {
 			var point = new google.maps.LatLng(
 				parseFloat(pinElem.getAttribute('lat')),
 				parseFloat(pinElem.getAttribute('lon')));
-			var filters = pinElem.getAttribute('filters');
-			var image = pinElem.getAttribute('image');
-			var name = pinElem.getAttribute('name');
-			var summary = pinElem.getAttribute('summary');
-			var content = pinElem.getAttribute('content');
-			content = content.replace(/"/g, "'"); //any content with double quotes is replaced with single quotes to prevent premature closing of functions
+			var filters = pinElem.getAttribute('filters').replace(/"/g, "'");
+			var image = pinElem.getAttribute('image').replace(/"/g, "'");
+			var name = pinElem.getAttribute('name').replace(/"/g, "'");
+			var summary = pinElem.getAttribute('summary').replace(/"/g, "'");
+			var content = pinElem.getAttribute('content').replace(/"/g, "'");
 
             /**
 			 * Each pin has the content added as a content window
@@ -146,7 +145,9 @@ function initMap() {
 	//Creating map listener
     //Clicking on the map closes the info window
     google.maps.event.addListener(map, "click", function(event) {
-        openInfoWindow.close();
+        if(openInfoWindow !== null){
+        	openInfoWindow.close();
+        }
     });
 }
 
@@ -154,24 +155,29 @@ function initMap() {
  * Function that filters all the pins
  */
 function filterPins() {
-    var filters = document.getElementsByClassName('filter');
-    var currFilters = [];
-    for (var i = 0; i < filters.length; i++) {
-        var checkbox = filters[i].firstChild;
-        if (checkbox.checked) {
-            currFilters.push(checkbox.nextSibling.innerHTML);
+    var filterTags = document.getElementsByName('filter');
+    var filter;
+    for (var i = 0, length = filterTags.length; i < length; i++)
+    {
+        if (filterTags[i].checked)
+        {
+            filter = filterTags[i].value;
+            break;
         }
     }
+
     for (var j = 0; j < pinsArray.length; j++) {
         var pin = pinsArray[j];
         var pinFilters = pin.filters.split(', ');
 		var display = false;
         pinFilters.forEach(function (element) {
-			if (currFilters.includes(element)) {
+            if (filter === element) {
                 display = true;
-            }
+            }else if (filter === "Clear Filters"){
+				display = true;
+			}
         });
-				pin.setVisible(display);
+        pin.setVisible(display);
     }
 }
 
