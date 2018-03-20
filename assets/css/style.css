@@ -98,10 +98,6 @@ input:required, textarea:required {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-
-    color: #485a40;
-    border-bottom: 3px solid #485A3F;
-    border-top: 1.5px solid #485A3F;
 p{
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
@@ -109,7 +105,7 @@ p{
     margin: 0 0 12px 0;
 }
 
-.admin header,#readmore, .content{
+.admin header,#readmore, .content, #donate{
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px 40px;
@@ -251,6 +247,11 @@ input:read-only {
 	padding: 0;
 }
 
+/* paypal form */
+form {
+    clear: both;
+    text-align: center;
+}
 
 @media only screen and (max-width: 740px) {
     img {

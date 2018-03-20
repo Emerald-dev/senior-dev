@@ -39,6 +39,27 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlJM57hL-l7y1cu1B94q8y4nTfOrkbgTI&callback=initMap" async defer></script>
 <div id="readmore"></div>
 
+<div id="donate">
+	<h2>Donate Now</h2>
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+	<!-- Identify your business so that you can collect the payments. -->
+	<input type="hidden" name="business"
+		value="donations@kcparkfriends.org">
+
+	<!-- Specify a Donate button. -->
+	<input type="hidden" name="cmd" value="_donations">
+
+	<!-- Specify details about the contribution -->
+	<input type="hidden" name="item_name" value="Friends of the Park">
+	<input type="hidden" name="item_number" value="Fall Cleanup Campaign">
+	<input type="hidden" name="currency_code" value="USD">
+
+	<!-- Display the payment button. -->
+	<input type="image" name="submit"  id="donateb"
+	src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+	alt="Donate">
+</div>
 <?php
 	include 'assets/php/footer.php';
 ?>
