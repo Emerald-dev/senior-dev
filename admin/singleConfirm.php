@@ -46,6 +46,9 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
                 $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
                 $postvar = '"' . $postvar . '"';
             }
+            if(strpos($postvar, '""')){
+                $postvar = str_replace('"', "'", $postvar);
+            }
             $builtQuery = $builtQuery . $postvar . ", ";
         }
         $builtQuery = substr($builtQuery, 0, -2);
@@ -72,6 +75,9 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
             else
             {
                 $postvar = $field . '=' . $postvar;
+            }
+            if(strpos($postvar, '""')){
+                $postvar = str_replace('"', "'", $postvar);
             }
             $builtQuery = $builtQuery . $postvar  . ",";
         }
