@@ -90,14 +90,25 @@ input:required, textarea:required {
 	padding-top: 9px;
 	padding-bottom: 9px;
 }
-.navbar a.nav-link{
+.navbar a.nav-link, .navbar li a:hover, .nav a.nav-item.hover {
 	font-family: 'Roboto Condensed', sans-serif;
 	font-weight: normal;
-    font-size: 16px;
-    line-height: 23px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+	font-size: 16px;
+	line-height: 23px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
 }
+
+.navbar li a:hover, .nav a.nav-item.hover {
+	font-weight: bold;
+}
+
+nav ul li a:focus,
+nav ul li a.current{
+	 text-decoration: underline;
+	 font-family: 'Roboto Condensed', sans-serif;
+}
+
 p{
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
