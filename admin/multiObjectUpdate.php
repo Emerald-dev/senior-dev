@@ -18,6 +18,7 @@ $id_field = $_POST['id_field'];
 //populate form here with table fields
 $dataType = filter_var($dataType, FILTER_SANITIZE_STRING);
 $text_field = filter_var($text_field, FILTER_SANITIZE_STRING);
+$text_field = str_replace('"', "'", $text_field);
 // build query to update page content and show the user the changes so they can confirm them 
 $builtQuery = "Update " . $object . ' set dataType="' . $dataType  .'",text="' . $text_field . '"';
 $builtQuery = $builtQuery . " where id=$id_field";
