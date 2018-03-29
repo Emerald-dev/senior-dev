@@ -131,7 +131,7 @@ function initMap() {
 				maxWidth: 250
 			});
 
-			//Added listener that closes the info windows upon clicking on the map
+			//Added listener that opens the info windows upon clicking on the pin and closes any other info windows
 			pin.addListener('click', function() {
 				if (openInfoWindow) {
 					openInfoWindow.close();
@@ -149,6 +149,16 @@ function initMap() {
         	openInfoWindow.close();
         }
     });
+
+    //adding additional listener so that the info window closes whenever a filter is clicked
+	var filterList = document.getElementsByClassName('filter');
+	for(var i =0;i< filterList.length;i++){
+        filterList[i].addEventListener("click",function(){
+            if(openInfoWindow !== null){
+                openInfoWindow.close();
+            }
+        });
+	}
 }
 
 /**
