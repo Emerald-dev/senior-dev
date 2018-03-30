@@ -14,6 +14,7 @@ $updatingPage = $_POST['updatingPage'];
 $namefield = $_POST['namefield'];
 $dataType = $_POST['dataType'];
 $text_field = $_POST['text_field'];
+$text_field = str_replace('"', "'", $text_field);
 $id_field = $_POST['id_field'];
 //populate form here with table fields
 $builtQuery = "delete from content where id=$id_field";
