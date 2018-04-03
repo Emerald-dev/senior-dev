@@ -89,7 +89,7 @@ while($row = $pageSections->fetch_assoc())
         }
         echo("</select>");
     }
-    echo("</br><input type='text' name='text_field' value='{$row['text']}' $readonly></br>");
+    echo("</br><input type='text' name='text_field' value='{$row['text']}' $readonly required></br>");
     if($action == "create")
     {
         // show text box options to add more content

@@ -76,7 +76,7 @@ echo("<form action='./singleConfirm.php' method='post'>");
             }
             else if($field == "lat" || $field == "lon")
             {
-                echo("<input type='number' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
+                echo("<input type='decimal' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
             }
 
 			else if($field == "content")

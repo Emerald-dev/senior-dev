@@ -74,7 +74,7 @@ foreach($tableFields as $field)
     else if($field == "lat" || $field == "lon")
     {
         echo("$field </br>");
-        echo("<input type='number' name='$field' value='' maxlength='$maxlength' required>");
+        echo("<input type='decimal' name='$field' value='' maxlength='$maxlength' required>");
         echo("<br/>");
     }
 	else if($field == "content")
@@ -83,11 +83,18 @@ foreach($tableFields as $field)
 		echo("<textarea name='$field' maxlength='$maxlength'></textarea>");
 		echo("<br/>");
 	}
-	else if($field == "name" || $field == "username" || $field == "password" || $field == "createPrivilege")
+	else if($field == "name" || $field == "username" || $field == "password")
     {
         echo("$field </br>");
         echo("<input type='text' name='$field' value='' maxlength='$maxlength' required>");
         echo("<br/>"); 
+    }
+    else if($field == "createPrivilege")
+    {
+        echo("$field </br>");
+        echo("<input type='radio' name='$field' value=0 maxlength='$maxlegnth' required> No" );
+        echo("<input type='radio' name='$field' value=1 maxlength='$maxlength' required> Yes");
+        echo("<br/>");
     }
     else
     {
