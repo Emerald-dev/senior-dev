@@ -84,10 +84,17 @@ echo("<form action='./singleConfirm.php' method='post'>");
 				echo("<textarea name='$field' maxlength='$maxlength' required>{$row[$field]}</textarea></br>");
 
             }
-			else if($field == "name" || $field == "username" || $field == "password" || $field == "createPrivilege")
+			else if($field == "name" || $field == "username" || $field == "password")
             {
 				echo("<input type='text' name='$field' value='{$row[$field]}' maxlength='$maxlength' required>");
 
+            }
+            else if($field == "createPrivilege")
+            {
+                echo("$field </br>");
+                echo("<input type='radio' name='$field' value=0 maxlength='$maxlegnth' required> No" );
+                echo("<input type='radio' name='$field' value=1 maxlength='$maxlength' required> Yes");
+                echo("<br/>");
             }
             else
             {
