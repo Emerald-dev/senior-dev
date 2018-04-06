@@ -20,6 +20,7 @@ if ($conn->connect_error) {
 
 $result = $conn->query($sql);
 
+
 if($conn->affected_rows < 1)
 {
 	echo("<p>Your action was unsuccessful, something went wrong. <br />".$conn->error."</p>");

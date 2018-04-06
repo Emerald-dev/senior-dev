@@ -41,10 +41,18 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
                 $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
                 $postvar = getHashedPass($postvar, $_POST["salt"]);
             }
+            if($field == "createPrivilege")
+            {
+                if($_POST["createPrivilege"] != 1)
+                $postvar = 0;
+            }
             if(!ctype_digit($postvar))
             {
                 $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
                 $postvar = '"' . $postvar . '"';
+            }
+            if(strpos($postvar, '""')){
+                $postvar = str_replace('"', "'", $postvar);
             }
             $builtQuery = $builtQuery . $postvar . ", ";
         }
@@ -57,8 +65,17 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
         $builtQuery = "Update " . $selectedObject . " set ";
         foreach($fieldset as $field)
         {
+            $postvar = "";
             // sanatize all of the input
-            $postvar = $_POST[$field];
+            if(isset($_POST[$field]))
+            {            
+                $postvar = $_POST[$field];
+                if(strpos($postvar, '"'))
+                {
+                    $postvar = str_replace('"', "'", $postvar);
+                }
+
+            }
             if($field == "password" && isset($_POST['salt']))
             {
                 $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
@@ -66,8 +83,15 @@ echo("<form action='./dbsubmitForm.php' method='post'>");
             }
             if(!ctype_digit($postvar))
             {
-                $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
-                $postvar = $field . '="' . $postvar . '"';
+                if($field == "lon" || $field == "lat")
+                {
+                    $postvar = $field . '=' . $postvar;
+                }
+                else
+                {
+                    $postvar = filter_var($postvar, FILTER_SANITIZE_STRING);
+                    $postvar = $field . '="' . $postvar . '"';
+                }
             }
             else
             {

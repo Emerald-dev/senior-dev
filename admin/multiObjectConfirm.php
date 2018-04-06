@@ -19,6 +19,10 @@ $namefield = $_POST['namefield'];
 // create connection
 $conn = getDBConnection();
 
+$successCount = 0;
+$error1="";
+$error2="";
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -31,11 +35,11 @@ if(isset($_POST['preQuery']))
 
     if($conn->affected_rows < 1 && $conn->errno != "0")
     {
-		echo("<p>Your action was unsuccessful, something went wrong. <br />".$conn->error."</p>");
+		$error1 = $conn->error;
     }
     else
     {
-		echo("<p>Action completed successfully!</p>");
+        $successCount = $successCount + 1;
     }
 }
 
@@ -44,12 +48,35 @@ $result = $conn->query($sql);
 
 if($conn->affected_rows < 1 && $conn->errno != "0")
 {
-    echo("<p>Your action was unsuccessful, something went wrong. <br />".$conn->error."</p>");
+    $error2 = $conn->error;
 }
 else
 {
-    echo("<p>Action completed successfully!</p>");
+    $successCount = $successCount + 2;
 }
+
+if($successCount == 3)
+{
+    echo("<p>Everything has completed successfully</p>");
+}
+else
+{
+    echo("<p>An error has occurred</p>");
+    if($error1!="")
+    {
+        echo("<p> . $error1 . </p>");
+    }
+    if($error2!="")
+    {
+        echo("<p> . $error2 . </p>");
+    }
+    if($error1=="" && $error2=="")
+    {
+        // this should never happen
+        echo("<p>error unknown</p>");
+    }
+}
+
 
 echo("<form action='./multiObjectEdit.php' method='post'>");
 echo("<input type='text' name='action' value='$action' hidden>");
