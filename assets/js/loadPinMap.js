@@ -39,13 +39,19 @@ function initMap() {
 				lng: position.coords.longitude
 			};
 
+			var goldStar = {
+				path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+				fillColor: 'yellow',
+				fillOpacity: 0.8,
+				scale: .2,
+				strokeColor: 'gold',
+				strokeWeight: 14
+			  };
+
 			var userMarker = new google.maps.Marker({
 				position: pos,
 				map: map,
-                icon: {
-                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                    scale: 4
-                }
+                icon: goldStar
 			});
 			//Changes the orientation of the userMarker if you move
             if (window.DeviceOrientationEvent) {
@@ -150,6 +156,59 @@ function initMap() {
         }
     });
 }
+
+/**
+ * Update user's location on map every 5 seconds
+ */
+setInterval(function() {
+	// Try HTML5 geolocation.
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			var pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+			
+			var goldStar = {
+				path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+				fillColor: 'yellow',
+				fillOpacity: 0.8,
+				scale: .2,
+				strokeColor: 'gold',
+				strokeWeight: 14
+			  };
+
+			var userMarker = new google.maps.Marker({
+				position: pos,
+				map: map,
+                icon: goldStar
+			});
+			//Changes the orientation of the userMarker if you move
+            if (window.DeviceOrientationEvent) {
+
+                window.addEventListener('deviceorientation', function(event) {
+                    var alpha = null;
+                    //Check for iOS property
+                    if (event.webkitCompassHeading) {
+                        alpha = event.webkitCompassHeading;
+                    }
+                    //non iOS
+                    else {
+                        alpha = event.alpha;
+                    }
+                    var locationIcon = userMarker.get('icon');
+                    locationIcon.rotation = 360 - alpha;
+                    userMarker.set('icon', locationIcon);
+                }, false);
+            }
+		}, function() {
+			handleLocationError(true, infoWindow, map.getCenter());
+		});
+	} else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+	}
+}, 5000);
 
 /**
  * Function that filters all the pins
