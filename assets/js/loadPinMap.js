@@ -178,6 +178,10 @@ setInterval(function() {
 				lng: position.coords.longitude
 			};
 
+			if (userMarker && userMarker.setMap) {
+				userMarker.setMap(null);
+			}
+  
 			userMarker = new google.maps.Marker({
 				position: pos,
 				map: map,
