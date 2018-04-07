@@ -216,7 +216,7 @@ setInterval(function() {
 		// Browser doesn't support Geolocation
 		handleLocationError(false, infoWindow, map.getCenter());
 	}
-}, 5000);
+}, 2000);
 
 /**
  * Function that filters all the pins
