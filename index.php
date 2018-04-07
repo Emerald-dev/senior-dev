@@ -34,29 +34,26 @@
 </div>
 
 <div class="filters-row">
-	<div class="row">
-       <div class="col-lg-12">
-          <div class="button-group">
-            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Filter</button>
-            <ul id="filters" class="dropdown-menu">
-                <li class="filter">
-                    <input id="checks-clear" type="radio" name="filter" value="Clear Filters" onclick="filterPins()" class="dropdownmenu">
-                    <label for="checks-clear">Clear Filters</label>
-                </li>
-	            <?php
-		            $filters = getFilters();
-		              foreach ($filters as $filter){
-			               echo "<li class='filter'>";
-                          echo "<input type=\"radio\" name='filter' id='$filter' value='$filter' onclick='filterPins()' class='dropdownmenu'>";
-			                echo "<label for='$filter'>$filter</label>";
-			                echo "</li>";}
-	               ?>
-            </ul>
-          </div>
+	
+  <div class="button-group">
+	<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Filter</button>
+	<ul id="filters" class="dropdown-menu">
+		<li class="filter">
+			<input id="checks-clear" type="radio" name="filter" value="Clear Filters" onclick="filterPins()" class="dropdownmenu">
+			<label for="checks-clear">Clear Filters</label>
+		</li>
+		<?php
+			$filters = getFilters();
+			  foreach ($filters as $filter){
+				   echo "<li class='filter'>";
+				  echo "<input type=\"radio\" name='filter' id='$filter' value='$filter' onclick='filterPins()' class='dropdownmenu'>";
+					echo "<label for='$filter'>$filter</label>";
+					echo "</li>";}
+		   ?>
+	</ul>
+  </div>
 
-        </div>
-    </div>
-
+</div>
 <div id="map"></div>
 <script src="assets/js/loadPinMap.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlJM57hL-l7y1cu1B94q8y4nTfOrkbgTI&callback=initMap" async defer></script>

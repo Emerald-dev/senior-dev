@@ -3,6 +3,8 @@
  */
 var map,currLocation;
 var pinsArray = [];
+var userMarker;
+
 /**
  * Map Creation function
  * Called in index.php
@@ -39,19 +41,16 @@ function initMap() {
 				lng: position.coords.longitude
 			};
 
-			var goldStar = {
-				path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-				fillColor: 'yellow',
-				fillOpacity: 0.8,
-				scale: .2,
-				strokeColor: 'gold',
-				strokeWeight: 14
-			  };
+			
 
-			var userMarker = new google.maps.Marker({
+			userMarker = new google.maps.Marker({
 				position: pos,
 				map: map,
-                icon: goldStar
+                icon: {
+                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                    scale: 4,
+					 strokeColor: 'gold'
+                }
 			});
 			//Changes the orientation of the userMarker if you move
             if (window.DeviceOrientationEvent) {
@@ -178,20 +177,15 @@ setInterval(function() {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			};
-			
-			var goldStar = {
-				path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-				fillColor: 'yellow',
-				fillOpacity: 0.8,
-				scale: .2,
-				strokeColor: 'gold',
-				strokeWeight: 14
-			  };
 
-			var userMarker = new google.maps.Marker({
+			userMarker = new google.maps.Marker({
 				position: pos,
 				map: map,
-                icon: goldStar
+                icon: {
+                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                    scale: 4,
+					 strokeColor: 'gold'
+               }
 			});
 			//Changes the orientation of the userMarker if you move
             if (window.DeviceOrientationEvent) {
