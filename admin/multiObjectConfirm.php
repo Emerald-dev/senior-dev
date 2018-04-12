@@ -55,7 +55,7 @@ else
     $successCount = $successCount + 2;
 }
 
-if($successCount == 3)
+if($successCount == 3 || ($error1=="" && $error2==""))
 {
     echo("<p>Everything has completed successfully</p>");
 }
