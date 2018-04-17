@@ -92,7 +92,7 @@ foreach($tableFields as $field)
     else if($field == "createPrivilege")
     {
         echo("$field </br>");
-        echo("<input type='radio' name='$field' value=0 maxlength='$maxlegnth' required> No" );
+        echo("<input type='radio' name='$field' value=0 maxlength='$maxlength' required> No" );
         echo("<input type='radio' name='$field' value=1 maxlength='$maxlength' required> Yes");
         echo("<br/>");
     }
